@@ -1,14 +1,32 @@
 //! DECLARING CONSTANTS - START
-    const express = require("express");
     // this gives us the app object that we can configure however we want
-    const app = express();
-//! DECLARINT CONSTANTS - END
+        const express = require("express");
+        const app = express();
+    // this is to connect to the mongoDB, importing the key from the config folder
+        //PLEASE READ... you need to go to whatwg-url/lib/encoding.js and declare "var util= require('util');" and write "util.TextEncoder" and "util.TextDecoder"
+        // If this is not changed, it will cause error
+        const mongoose = require("mongoose");
+        const db = require("./config/keys").mongoURI
+//! DECLARING CONSTANTS - END
+
+//! CONNECTING TO DATABASE - START
+    // Have mongoose connect to our database
+    // First argument is the URI
+    // Second argument is the configuration object
+        mongoose
+            .connect(db, { useNewUrlParser: true })
+            // a promise is returned... letting you know that it's connected to the database
+            .then(() => console.log("connected to mongoDB"))
+            // if it fails, we want to know about that too
+            .catch(err => console.log(err));
+//! CONNECTING TO DATABASE - END
 
 //! DECLARING ROUTES - START
     // route used to listen for incoming request
         // Get request (root route)
         app.get("/", (req, res) => {
-            res.send("Hello AppAcademy");
+            console.log(res);
+            res.send("Hello AppAcademy!");
         });
 //! DECLARING ROUTES - END
 
