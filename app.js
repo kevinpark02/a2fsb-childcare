@@ -6,7 +6,10 @@
         //PLEASE READ... you need to go to whatwg-url/lib/encoding.js and declare "var util= require('util');" and write "util.TextEncoder" and "util.TextDecoder"
         // If this is not changed, it will cause error
         const mongoose = require("mongoose");
-        const db = require("./config/keys").mongoURI
+        const db = require("./config/keys").mongoURI;
+    // this gives us the objects from the models
+        const users = require("./routes/api/users");
+        const children = require("./routes/api/children");
 //! DECLARING CONSTANTS - END
 
 //! CONNECTING TO DATABASE - START
@@ -27,6 +30,9 @@
         app.get("/", (req, res) => {
             res.send("Hello AppAcademy!");
         });
+    // integrate api calls to app.js. Any request made using the api address, we will use whatever function we pass in the 2nd argument
+        app.use("/api/users", users);
+        app.use("/api/children", children);
 //! DECLARING ROUTES - END
 
 //! DEFINING PORT - START
