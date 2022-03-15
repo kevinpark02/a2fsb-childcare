@@ -25,7 +25,6 @@
     // route used to listen for incoming request
         // Get request (root route)
         app.get("/", (req, res) => {
-            console.log(res);
             res.send("Hello AppAcademy!");
         });
 //! DECLARING ROUTES - END
