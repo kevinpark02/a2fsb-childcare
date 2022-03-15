@@ -7,9 +7,11 @@
         // If this is not changed, it will cause error
         const mongoose = require("mongoose");
         const db = require("./config/keys").mongoURI;
-    // this gives us the objects from the models
+    // this gives us the objects from the routes
         const users = require("./routes/api/users");
         const children = require("./routes/api/children");
+    // import user model
+        const User = require("./models/User");
 //! DECLARING CONSTANTS - END
 
 //! CONNECTING TO DATABASE - START
@@ -28,6 +30,16 @@
     // route used to listen for incoming request
         // Get request (root route)
         app.get("/", (req, res) => {
+            const user = new User({
+                firstName: "Kevin",
+                lastName: "Park",
+                gender: "Male",
+                phone: "(310) 418 - 3016",
+                email: "kevin.park@gpmail.org",
+                password: "qwertyuiop",
+                roles: ["administrator", "parent"]
+            })
+            user.save();
             res.send("Hello AppAcademy!");
         });
     // integrate api calls to app.js. Any request made using the api address, we will use whatever function we pass in the 2nd argument

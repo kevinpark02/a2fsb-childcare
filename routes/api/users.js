@@ -5,9 +5,10 @@
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
-    router.get("/test", (req, res) => {
-        res.json({ msg: "This is the user route" });
-    });
+    // Test route
+        router.get("/test", (req, res) => {
+            res.json({ msg: "This is the user route" });
+        });
 //! ADD ROUTES - END
 
 module.exports = router;

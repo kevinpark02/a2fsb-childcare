@@ -5,9 +5,10 @@
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
-    router.get("/test", (req, res) => {
-        res.json({ msg: "This is the children route" });
-    });
+    // Test route
+        router.get("/test", (req, res) => {
+            res.json({ msg: "This is the children route" });
+        });
 //! ADD ROUTES - END
 
 module.exports = router;
