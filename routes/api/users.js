@@ -5,8 +5,9 @@
         const User = require("../../models/User");
     // Bcrypt
         const bcrypt = require('bcryptjs');
-    // Jwt Key
+    // Jwt
         const keys = require("../../config/keys");
+        const jwt = require("jsonwebtoken");
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
@@ -65,7 +66,23 @@
                     bcrypt.compare(password, user.password)
                           .then(isMatch => {
                               if(isMatch) {
-                                  res.json({ msg: "Success!" });
+                                //   This will be commented out because we will be returning the jwt web token
+                                    //   res.json({ msg: "Success!" });
+                                const payload = {
+                                    id: user.id,
+                                    email: user.email
+                                }
+                                jwt.sign(
+                                    payload,
+                                    keys.secretOrKey,
+                                    { expiresIn: 3600 },
+                                    (err, token) => {
+                                        res.json({
+                                            success: true,
+                                            token: "Bearer " + token
+                                        });
+                                    }
+                                )
                               } else {
                                   return res.status(400).json({ password: "Incorrect password"});
                               }
