@@ -14,6 +14,8 @@
         const User = require("./models/User");
     // constants needed to interact with Postman
         const bodyParser = require('body-parser');
+    // passport
+        const passport = require('passport');
 //! DECLARING CONSTANTS - END
 
 //! CONNECTING TO DATABASE - START
@@ -39,20 +41,23 @@
 
 //! DECLARING ROUTES - START
     // route used to listen for incoming request
-        // Get request (root route)
-        app.get("/", (req, res) => {
-            const user = new User({
-                firstName: "Kevin",
-                lastName: "Park",
-                gender: "Male",
-                phone: "(310) 418 - 3016",
-                email: "kevin.park@gpmail.org",
-                password: "qwertyuiop",
-                roles: ["administrator", "parent"]
-            })
-            user.save();
-            res.send("Hello AppAcademy!");
-        });
+        // Get request (root route) - no need for this anymore
+            // app.get("/", (req, res) => {
+            //     const user = new User({
+            //         firstName: "Kevin",
+            //         lastName: "Park",
+            //         gender: "Male",
+            //         phone: "(310) 418 - 3016",
+            //         email: "kevin.park@gpmail.org",
+            //         password: "qwertyuiop",
+            //         roles: ["administrator", "parent"]
+            //     })
+            //     user.save();
+            //     res.send("Hello AppAcademy!");
+            // });
+    // use the passport
+        app.use(passport.initialize());
+        require('./config/passport')(passport);
     // integrate api calls to app.js. Any request made using the api address, we will use whatever function we pass in the 2nd argument
         app.use("/api/users", users);
         app.use("/api/children", children);
