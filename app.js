@@ -12,6 +12,8 @@
         const children = require("./routes/api/children");
     // import user model
         const User = require("./models/User");
+    // constants needed to interact with Postman
+        const bodyParser = require('body-parser');
 //! DECLARING CONSTANTS - END
 
 //! CONNECTING TO DATABASE - START
@@ -25,6 +27,15 @@
             // if it fails, we want to know about that too
             .catch(err => console.log(err));
 //! CONNECTING TO DATABASE - END
+
+//! INTERACT WITH POSTMAN - START
+    // app will respond to other software such as postman
+        app.use(bodyParser.urlencoded({
+            extended: false
+        }));
+    // telling the app to respond to json requests    
+        app.use(bodyParser.json());
+//! INTERACT WITH POSTMAN - END
 
 //! DECLARING ROUTES - START
     // route used to listen for incoming request
