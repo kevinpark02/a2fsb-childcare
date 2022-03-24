@@ -71,7 +71,6 @@
                                            id: user.id, 
                                            email: user.email 
                                         };
-
                                         jwt.sign(
                                             payload, 
                                             keys.secretOrKey,
