@@ -3,6 +3,8 @@
         const express = require("express");
         const router = express.Router();
         const User = require("../../models/User");
+    // Bcrypt
+        const bcrypt = require('bcryptjs');
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
@@ -27,9 +29,23 @@
                         roles: req.body.roles
                     })
 
-                    newUser.save()
-                           .then(user => res.send(user))
-                           .catch(err => res.send(err));
+                    // This is just for testing, so we will comment it out, but leave it here for others to see
+                    // newUser.save()
+                    //        .then(user => res.send(user))
+                    //        .catch(err => res.send(err));
+                    
+                    // generate salt. 
+                    // First argument is the number of rounds to generate salt
+                    // Second argument is the call back function that gets invoked when salt is generated
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if(err) throw err;
+                            newUser.password = hash;
+                            newUser.save()
+                                   .then((user) => res.json(user))
+                                   .catch(err => console.log(err))
+                        })
+                    })
                 }
             })
         })
