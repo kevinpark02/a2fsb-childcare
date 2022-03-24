@@ -5,6 +5,8 @@
         const User = require("../../models/User");
     // Bcrypt
         const bcrypt = require('bcryptjs');
+    // Jwt Key
+        const keys = require("../../config/keys");
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
@@ -48,9 +50,9 @@
                     })
                 }
             })
-        })
+        });
     
-    // User login route
+    // User login route - to check email and password match up to user
         router.post('/login', (req, res) => {
             const email = req.body.email;
             const password = req.body.password;
@@ -69,7 +71,7 @@
                               }
                           })
                 })
-        })
+        });
 //! ADD ROUTES - END
 
 module.exports = router;
