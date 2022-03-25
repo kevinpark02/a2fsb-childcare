@@ -4,10 +4,10 @@ const validText = require("./valid-text");
 module.exports = function validateRegisterInput(data) {
     let errors = {};
 
-    data.firstName = ValidText(data.firstName) ? data.firstName : "";
-    data.lastName = ValidText(data.lastName) ? data.lastName : "";
-    data.gender = ValidText(data.gender) ? data.gender : "";
-    data.phone = ValidText(data.phone) ? data.phone : "";
+    data.firstName = validText(data.firstName) ? data.firstName : "";
+    data.lastName = validText(data.lastName) ? data.lastName : "";
+    data.gender = validText(data.gender) ? data.gender : "";
+    data.phone = validText(data.phone) ? data.phone : "";
     data.email = validText(data.email) ? data.email : "";
     data.password = validText(data.password) ? data.password : "";
     data.password2 = validText(data.password2) ? data.password2 : "";
@@ -51,7 +51,7 @@ module.exports = function validateRegisterInput(data) {
 
     return {
         errors,
-        isValid: Object.keys(errors.length) === 0
+        isValid: Object.keys(errors).length === 0
     }
 
 }

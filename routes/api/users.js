@@ -10,6 +10,9 @@
         const jwt = require("jsonwebtoken");
     // passport
         const passport = require("passport");
+    // validation
+        const validateRegisterInput = require("../../validation/register");
+        const validateLoginInput = require("../../validation/login");
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
