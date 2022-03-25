@@ -40,5 +40,5 @@ const Schema = mongoose.Schema;
     });
 
     // Using mongoose to create the User model
-    const User = mongoose.model('users', UserSchema)
+    const User = mongoose.model('users', UserSchema);
     module.exports = User;
