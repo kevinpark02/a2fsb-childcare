@@ -14,7 +14,8 @@ module.exports = function validateRegisterInput(data) {
     //! We need a validator for roles array
 
     if(Validator.isEmpty(data.firstName)) {
-        errors.firstName = "First name field is required";
+        // errors.firstName = "First name field is required";
+        errors.firstName = data.firstName
     }
 
     if(Validator.isEmpty(data.lastName)) {
@@ -34,7 +35,7 @@ module.exports = function validateRegisterInput(data) {
     }
 
     if(Validator.isEmpty(data.email)) {
-        errors.phone = "Email field is required";
+        errors.email = "Email field is required";
     }
 
     if(Validator.isEmpty(data.password)) {
