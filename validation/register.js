@@ -26,6 +26,12 @@ module.exports = function validateRegisterInput(data) {
         errors.gender = "Gender field is required";
     }
 
+    if(Validator.isMobilePhone(data.phone)) {
+        // must follow this format to be valid
+        // (xxx) xxx - xxxx
+        errors.phone = "Phone number is invalid";
+    }
+
     if(Validator.isEmpty(data.phone)) {
         errors.phone = "Phone field is required";
     }
