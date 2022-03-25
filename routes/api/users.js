@@ -17,9 +17,9 @@
 
 //! ADD ROUTES - START
     // Test route - don't need this anymore
-        // router.get("/test", (req, res) => {
-        //     res.json({ msg: "This is the user route" });
-        // });
+        router.get("/test", (req, res) => {
+            res.json({ msg: "This is the user route" });
+        });
 
     // Private auth route
         router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
