@@ -5,8 +5,11 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstName: "",
+      lastName: "",
+      gender: "",
+      phone: "",
       email: "",
-      handle: "",
       password: "",
       password2: "",
       errors: {},
@@ -34,10 +37,13 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let user = {
-      email: this.state.email,
-      handle: this.state.handle,
-      password: this.state.password,
-      password2: this.state.password2,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        gender: this.state.gender,
+        phone: this.state.phone,
+        email: this.state.email,
+        password: this.state.password,
+        password2: this.state.password2,
     };
 
     this.props.signup(user, this.props.history);
@@ -61,16 +67,37 @@ class SignupForm extends React.Component {
             <br />
             <input
               type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
+              value={this.state.firstName}
+              onChange={this.update("firstName")}
+              placeholder="First name"
             />
             <br />
             <input
               type="text"
-              value={this.state.handle}
-              onChange={this.update("handle")}
-              placeholder="Handle"
+              value={this.state.lastName}
+              onChange={this.update("lastName")}
+              placeholder="Last name"
+            />
+            <br />
+            <input
+              type="text"
+              value={this.state.gender}
+              onChange={this.update("gender")}
+              placeholder="Gender"
+            />
+            <br />
+            <input
+              type="text"
+              value={this.state.phone}
+              onChange={this.update("phone")}
+              placeholder="Phone"
+            />
+            <br />
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={this.update("email")}
+              placeholder="Email"
             />
             <br />
             <input
