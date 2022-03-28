@@ -40,6 +40,8 @@ export const login = (user) => (dispatch) =>
   APIUtil.login(user)
     .then((res) => {
       const { token } = res.data;
+      // allows you to save something on client side between refresh and closing the tab
+      // even if you refresh, you are loading from the local storage
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
