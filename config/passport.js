@@ -10,7 +10,7 @@
 
 //! Passport Options - START
     const options = {};
-    options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken;
+    options.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
     options.secretOrKey =  keys.secretOrKey;
 //! Passport Options - END
 
