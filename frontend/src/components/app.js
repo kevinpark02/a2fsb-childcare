@@ -8,6 +8,7 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ChildrenContainer from "./children/children_container";
 import ProfileContainer from "./profile/profile_container";
+import NewChildContainer from "./children/new_child_container";
 
 const App = () => (
   <div>
@@ -19,7 +20,7 @@ const App = () => (
 
       <ProtectedRoute exact path="/children" component={ChildrenContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      {/* <ProtectedRoute exact path="/new_child" component={NewChildContainer} /> */}
+      <ProtectedRoute exact path="/new_child" component={NewChildContainer} />
 
     </Switch>
   </div>
