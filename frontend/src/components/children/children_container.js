@@ -4,7 +4,7 @@ import Children from './children';
 
 
 const mSTP = state => ({
-    children: Object.values(state.children) 
+    children: Object.values(state.children.all) 
 });
 
 const mDTP = dispatch => ({

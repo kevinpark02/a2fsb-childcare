@@ -7,9 +7,9 @@ class Children extends React.Component {
     constructor(props) {
         super(props);
 
-        // this.state = {
-        //     children: []
-        // }
+        this.state = {
+            children: []
+        }
     }
 
     componentDidMount() {
@@ -24,6 +24,14 @@ class Children extends React.Component {
     render() {
         const children = this.props.children
         console.log(children)
+
+        const childrenIndex = children.map( child => {
+                return(
+                    <ChildBox key={child._id} firstName={child.firstname}/>
+                    // <div>{child.firstname}</div>
+                )
+        })
+
         if (children.length === 0) {
             return (
                 <div>There are no children</div>
@@ -32,9 +40,7 @@ class Children extends React.Component {
             return (
                 <div>
                     <h2>All Children</h2>
-                    {/* {children.map(child => (
-                        <ChildBox key={child._id} firstName={child.firstname}/>
-                    ))} */}
+                    {childrenIndex}
                 </div>
             )
         }
