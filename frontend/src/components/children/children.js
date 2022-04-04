@@ -27,7 +27,7 @@ class Children extends React.Component {
 
         const childrenIndex = children.map( child => {
                 return(
-                    <ChildBox key={child._id} firstName={child.firstName} lastName={child.lastName}/>
+                    <ChildBox key={child._id} child = {child} firstName={child.firstName} lastName={child.lastName}/>
                     // <div>{child.firstname}</div>
                 )
         })
