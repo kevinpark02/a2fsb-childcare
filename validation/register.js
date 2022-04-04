@@ -1,5 +1,6 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
+const code = require("../config/keys")
 
 module.exports = function validateRegisterInput(data) {
     let errors = {};
@@ -58,6 +59,10 @@ module.exports = function validateRegisterInput(data) {
 
     if(Validator.isEmpty(data.registrationCode)) {
         errors.registrationCode = "Registration code is required";
+    }
+
+    if(data.registrationCode !== code.registrationCode) {
+        errors.registrationCode = "You do not have the correct code";
     }
 
     return {
