@@ -14,4 +14,4 @@ export const createChild = data => {
 
 export const deleteChild = (childId) => {
     return axios.delete(`/api/children/${childId}`)
-} 
+}
