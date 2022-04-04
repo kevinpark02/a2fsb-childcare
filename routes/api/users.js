@@ -46,7 +46,6 @@
                         phone: req.body.phone,
                         email: req.body.email,
                         password: req.body.password,
-                        roles: req.body.roles
                     });
 
                     bcrypt.genSalt(10, (err, salt) => {
