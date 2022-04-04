@@ -33,11 +33,9 @@
                 return res.status(400).json(errors);
             }
 
-
             User.findOne({ email: req.body.email })
             .then(user => {
                 if(user) {
-                    // return res.status(400).json({ email: "A user is already registered" })
                     errors.handle = "User already exists";
                     return res.status(400).json(errors);
                 } else {
@@ -101,8 +99,6 @@
                     bcrypt.compare(password, user.password)
                           .then(isMatch => {
                               if(isMatch) {
-                                //   This will be commented out because we will be returning the jwt web token
-                                    //   res.json({ msg: "Success!" });
                                 const payload = {
                                     id: user.id,
                                     email: user.email
