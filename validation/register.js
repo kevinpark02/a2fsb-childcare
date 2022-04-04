@@ -11,6 +11,7 @@ module.exports = function validateRegisterInput(data) {
     data.email = validText(data.email) ? data.email : "";
     data.password = validText(data.password) ? data.password : "";
     data.password2 = validText(data.password2) ? data.password2 : "";
+    data.registrationCode = validText(data.registrationCode) ? data.registrationCode : "";
     //! We need a validator for roles array
 
     if(Validator.isEmpty(data.firstName)) {
