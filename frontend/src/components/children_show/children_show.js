@@ -15,4 +15,4 @@ class ChildrenShow extends React.Component {
     }
 }
 
-export default withRouter(Children);
+export default withRouter(ChildrenShow);

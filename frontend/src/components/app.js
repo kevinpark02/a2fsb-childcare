@@ -9,6 +9,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import ChildrenContainer from "./children/children_container";
 import ProfileContainer from "./profile/profile_container";
 import NewChildContainer from "./children/new_child_container";
+import ChildrenShowContainer from "./children_show/children_show_container";
 
 const App = () => (
   <div>
