@@ -21,6 +21,7 @@ const App = () => (
       <ProtectedRoute exact path="/children" component={ChildrenContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/new_child" component={NewChildContainer} />
+      <ProtectedRoute exact path="/children/:id" component={ChildrenShowContainer} />
 
     </Switch>
   </div>
