@@ -23,6 +23,8 @@ class ChildrenShow extends React.Component {
                 <div>
                     <img></img>
                     {child.firstName} {" "} {child.lastName}
+                    <br></br>
+                    {child.gender}
                 </div>
             )
         }
