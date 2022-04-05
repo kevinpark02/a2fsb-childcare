@@ -12,6 +12,7 @@ class SignupForm extends React.Component {
       email: "",
       password: "",
       password2: "",
+      registrationCode: "",
       errors: {},
     };
 
@@ -44,6 +45,7 @@ class SignupForm extends React.Component {
         email: this.state.email,
         password: this.state.password,
         password2: this.state.password2,
+        registrationCode: this.state.registrationCode,
     };
 
     this.props.signup(user, this.props.history);
@@ -112,6 +114,13 @@ class SignupForm extends React.Component {
               value={this.state.password2}
               onChange={this.update("password2")}
               placeholder="Confirm Password"
+            />
+            <br />
+            <input
+              type="text"
+              value={this.state.registrationCode}
+              onChange={this.update("registrationCode")}
+              placeholder="Enter the registration code"
             />
             <br />
             <input type="submit" value="Submit" />
