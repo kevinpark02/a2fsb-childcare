@@ -6,12 +6,28 @@ class ChildrenShow extends React.Component {
         super(props)
     }
 
+    componentDidMount() {
+        this.props.fetchChildren();
+    }
+
     render(){
-        return (
-            <div>
-                Hi
-            </div>
-        )
+        console.log(this.props.childId)
+        console.log(this.props.children)
+        const children = this.props.children
+        const child = children.find(child => child._id === this.props.childId);
+        console.log(child)
+        if (children.length === 0) {
+            return null
+        } else {
+            return (
+                <div>
+                    <img></img>
+                    {child.firstName} {" "} {child.lastName}
+                    <br></br>
+                    {child.gender}
+                </div>
+            )
+        }
     }
 }
 
