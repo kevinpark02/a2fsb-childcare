@@ -116,6 +116,13 @@ class SignupForm extends React.Component {
               placeholder="Confirm Password"
             />
             <br />
+            <input
+              type="text"
+              value={this.state.registrationCode}
+              onChange={this.update("registrationCode")}
+              placeholder="Enter the registration code"
+            />
+            <br />
             <input type="submit" value="Submit" />
             {this.renderErrors()}
           </div>
