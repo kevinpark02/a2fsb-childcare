@@ -1,5 +1,6 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
+const code = require("../config/keys")
 
 module.exports = function validateRegisterInput(data) {
     let errors = {};
@@ -11,7 +12,7 @@ module.exports = function validateRegisterInput(data) {
     data.email = validText(data.email) ? data.email : "";
     data.password = validText(data.password) ? data.password : "";
     data.password2 = validText(data.password2) ? data.password2 : "";
-    //! We need a validator for roles array
+    data.registrationCode = validText(data.registrationCode) ? data.registrationCode : "";
 
     if(Validator.isEmpty(data.firstName)) {
         errors.firstName = "First name field is required";
@@ -53,6 +54,14 @@ module.exports = function validateRegisterInput(data) {
 
     if(!Validator.equals(data.password, data.password2)) {
         errors.password2 = "Passwords must match";
+    }
+
+    if(Validator.isEmpty(data.registrationCode)) {
+        errors.registrationCode = "Registration code is required";
+    }
+
+    if(data.registrationCode !== code.registrationCode) {
+        errors.registrationCode = "You do not have the correct code";
     }
 
     return {
