@@ -3,6 +3,7 @@ const validText = require('./valid-text');
 
 module.exports = function validateChildInput(data) {
     let errors = {};
+    //coding is fun
 
     data.firstName = validText(data.firstName) ? data.firstName: "";
     data.lastName = validText(data.lastName) ? data.lastName: "";
