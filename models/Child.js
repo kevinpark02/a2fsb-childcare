@@ -19,6 +19,9 @@ const ChildSchema = new Schema({
         ref: 'users',
         required: true
     }],
+    profilePicture: {
+        type: String,
+    },
     date: {
         type: Date,
         default: Date.now
