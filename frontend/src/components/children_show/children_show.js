@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from 'react';
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { deleteChild } from "../../util/child_api_util";
+import { removeChild } from "../../actions/child_actions";
 
 class ChildrenShow extends React.Component {
     constructor(props){
@@ -14,7 +14,9 @@ class ChildrenShow extends React.Component {
         this.props.fetchChildren();
     }
 
-
+    handleDelete(e){
+        this.props.removeChild(this.props.child);
+    }
 
     render(){
         const children = this.props.children
@@ -37,8 +39,7 @@ class ChildrenShow extends React.Component {
                     <input type="file" accept='image/*'/>
                     {/* <button>Upload Profile Picture</button> */}
                     <br></br>
-                    <Link to={`/children/`}><button className="" onClick='this.props.removeChild(child)'>Delete</button></Link>
-
+                    <Link to={`/children/`}><button className="" onClick={this.handleDelete}>Delete</button></Link>
                 </div>
             )
         }

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchChildren } from '../../actions/child_actions';
-
+import { fetchChildren, removeChild } from '../../actions/child_actions';
 
 import ChildrenShow from './children_show';
 

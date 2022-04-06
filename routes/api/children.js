@@ -56,8 +56,10 @@ const { deleteOne } = require("../../models/Child");
             }
         )
 
-        router.delete("/", (req, res) => {
-            deleteOne(req.params.child)
+        router.delete("/:id", (req, res) => {
+            Child.findByIdAndDelete(req.params.id)
+                .then((child) => res.json("Child successfully deleted"))
+                .catch(err => res.status(400).json("Child was not successfully deleted"))
         }
     )
 //! ADD ROUTES - END

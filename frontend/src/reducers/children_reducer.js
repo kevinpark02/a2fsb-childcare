@@ -2,11 +2,13 @@ import {
   RECEIVE_CHILDREN,
   RECEIVE_USER_CHILDREN,
   RECEIVE_NEW_CHILD,
+  CLEAR_CHILD
 } from "../actions/child_actions";
 
 const ChildrenReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
+    debugger
     switch(action.type) {
         case RECEIVE_CHILDREN:
             newState.all = action.children.data;
@@ -17,6 +19,8 @@ const ChildrenReducer = (state = { all: {}, user: {}, new: undefined }, action) 
         case RECEIVE_NEW_CHILD:
             newState.new = action.child.data
             return newState;
+        case CLEAR_CHILD:
+            return state.filter(user => user !== action.userIdToDelete);
         default:
             return state;
     }
