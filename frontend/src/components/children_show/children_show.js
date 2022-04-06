@@ -1,6 +1,8 @@
 import React from "react";
 import { useRef } from 'react';
 import { withRouter } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { deleteChild } from "../../util/child_api_util";
 
 class ChildrenShow extends React.Component {
     constructor(props){
@@ -34,6 +36,8 @@ class ChildrenShow extends React.Component {
                     <br></br>
                     <input type="file" accept='image/*'/>
                     {/* <button>Upload Profile Picture</button> */}
+                    <br></br>
+                    <Link to={`/children/`}><button className="" onClick='this.props.removeChild(child)'>Delete</button></Link>
 
                 </div>
             )
