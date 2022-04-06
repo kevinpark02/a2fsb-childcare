@@ -7,11 +7,19 @@ const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const bodyParser = require('body-parser');
 const passport = require('passport');
+const path = require('path');
 
 // ADD REQUIRED ROUTES - START
 const users = require("./routes/api/users");
 const children = require("./routes/api/children");
 // ADD REQUIRED ROUTES - END
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("frontend/build"));
+  app.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 mongoose
     .connect(db, { useNewUrlParser: true })
