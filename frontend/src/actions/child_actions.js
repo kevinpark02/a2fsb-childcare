@@ -3,7 +3,7 @@ import { getChildren, getUserChildren, createChild, deleteChild } from "../util/
 export const RECEIVE_CHILDREN = "RECEIVE_CHILDREN";
 export const RECEIVE_USER_CHILDREN = "RECEIVE_USER_CHILDREN";
 export const RECEIVE_NEW_CHILD = "RECEIVE_NEW_CHILD";
-export const CLEAR_CHILD = "CLEAR_CHILD"
+export const CLEAR_CHILD = "CLEAR_CHILD";
 
 export const receiveChildren = children => ({
     type: RECEIVE_CHILDREN,
@@ -20,9 +20,9 @@ export const receiveNewChild = child => ({
     child
 });
 
-export const clearChild = child => ({
+export const clearChild = childId => ({
     type: CLEAR_CHILD,
-    child
+    childId
 })
 
 export const fetchChildren = () => dispatch => (
@@ -45,5 +45,6 @@ export const makeChild = data => dispatch => (
 
 export const removeChild = childId => dispatch => (
     deleteChild(childId)
-        .then(child => dispatch(clearChild(child)))
-)
+        .then(() => dispatch(clearChild(childId)))
+        .catch(err => console.log(err))
+);

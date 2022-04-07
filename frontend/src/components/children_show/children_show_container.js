@@ -12,7 +12,8 @@ const mSTP = (state, ownProps) => ({
 });
 
 const mDTP = dispatch => ({
-    fetchChildren: () => dispatch(fetchChildren())
+    fetchChildren: () => dispatch(fetchChildren()),
+    removeChild:(childId) => dispatch(removeChild(childId))
 });
 
 export default connect(mSTP, mDTP)(ChildrenShow);

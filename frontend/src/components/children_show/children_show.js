@@ -14,14 +14,16 @@ class ChildrenShow extends React.Component {
         this.props.fetchChildren();
     }
 
-    handleDelete(e){
-        this.props.removeChild(this.props.child);
+    handleDelete(id){
+        this.props.removeChild(id)
+            .then(() => this.props.history.push(`/children`))
     }
 
     render(){
-        const children = this.props.children
+        const children = this.props.children;
         const child = children.find(child => child._id === this.props.childId);
-        console.log(child)
+        const childId = this.props.childId;
+        console.log(child);
 
         // const inputRef = useRef();
         // const triggerFileSelectPopup = () => inputRef.current.click();
@@ -39,7 +41,7 @@ class ChildrenShow extends React.Component {
                     <input type="file" accept='image/*'/>
                     {/* <button>Upload Profile Picture</button> */}
                     <br></br>
-                    <Link to={`/children/`}><button className="" onClick={this.handleDelete}>Delete</button></Link>
+                    <button className="" onClick={() => this.handleDelete(childId)}>Delete</button>
                 </div>
             )
         }
