@@ -1,10 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./main_page.css"
 
 class MainPage extends React.Component {
   render() {
     return (
-      <div>
-        <h1>a2f sb childcare</h1>
+      <div className="main-page">
+        <h1>Seedling<br></br>Scheduling</h1>
+        <div>
+          <Link to={"/signup"}>Signup</Link>
+          <Link to={"/login"}>Login</Link>
+        </div>
       </div>
     );
   }

@@ -11,6 +11,8 @@ import ProfileContainer from "./profile/profile_container";
 import NewChildContainer from "./children/new_child_container";
 import ChildrenShowContainer from "./children_show/children_show_container";
 
+import "./app.css"
+
 const App = () => (
   <div>
     <NavBarContainer />
