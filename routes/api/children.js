@@ -8,6 +8,7 @@
         const validateChildInput = require("../../validation/children");
     // Child model
         const Child = require("../../models/Child");
+const { deleteOne } = require("../../models/Child");
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
@@ -50,10 +51,18 @@
 
                 newChild
                     .save()
-                    .then(child => res.json(child));
+                    .then(child => res.json(child))
 
             }
         )
+
+        router.delete("/:id", (req, res) => {
+            Child.findByIdAndDelete(req.params.id)
+                .then((child) => res.json("Child successfully deleted"))
+                .catch(err => res.status(400).json("Child was not successfully deleted"))
+        }
+    )
 //! ADD ROUTES - END
+
 
 module.exports = router;

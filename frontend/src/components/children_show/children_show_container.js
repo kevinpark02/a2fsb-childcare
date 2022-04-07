@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchChildren } from '../../actions/child_actions';
-
+import { fetchChildren, removeChild } from '../../actions/child_actions';
 
 import ChildrenShow from './children_show';
 
@@ -13,7 +12,8 @@ const mSTP = (state, ownProps) => ({
 });
 
 const mDTP = dispatch => ({
-    fetchChildren: () => dispatch(fetchChildren())
+    fetchChildren: () => dispatch(fetchChildren()),
+    removeChild:(childId) => dispatch(removeChild(childId))
 });
 
 export default connect(mSTP, mDTP)(ChildrenShow);

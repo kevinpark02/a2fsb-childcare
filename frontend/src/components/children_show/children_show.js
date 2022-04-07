@@ -1,6 +1,8 @@
 import React from "react";
 import { useRef } from 'react';
 import { withRouter } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { removeChild } from "../../actions/child_actions";
 
 class ChildrenShow extends React.Component {
     constructor(props){
@@ -12,12 +14,16 @@ class ChildrenShow extends React.Component {
         this.props.fetchChildren();
     }
 
-
+    handleDelete(id){
+        this.props.removeChild(id)
+            .then(() => this.props.history.push(`/children`))
+    }
 
     render(){
-        const children = this.props.children
+        const children = this.props.children;
         const child = children.find(child => child._id === this.props.childId);
-        console.log(child)
+        const childId = this.props.childId;
+        console.log(child);
 
         // const inputRef = useRef();
         // const triggerFileSelectPopup = () => inputRef.current.click();
@@ -34,7 +40,8 @@ class ChildrenShow extends React.Component {
                     <br></br>
                     <input type="file" accept='image/*'/>
                     {/* <button>Upload Profile Picture</button> */}
-
+                    <br></br>
+                    <button className="" onClick={() => this.handleDelete(childId)}>Delete</button>
                 </div>
             )
         }
