@@ -44,7 +44,6 @@ router.post('/new', (req, res) => {
 
 // EDIT VOLUNTEER
 router.patch('/edit/:id', (req,res) => {
-    mongoose.set('useFindAndModify', false);
     const { errors, isValid } = validateVolunteerInput(req.body);
 
     if(!isValid) {
