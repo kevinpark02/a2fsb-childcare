@@ -12,6 +12,7 @@ const path = require('path');
 // ADD REQUIRED ROUTES - START
 const users = require("./routes/api/users");
 const children = require("./routes/api/children");
+const volunteers = require("./routes/api/volunteers");
 // ADD REQUIRED ROUTES - END
 
 if (process.env.NODE_ENV === "production") {
@@ -34,6 +35,7 @@ require('./config/passport')(passport);
 // ADD BACKEND ROUTES - START
 app.use("/api/users", users);
 app.use("/api/children", children);
+app.use("/api/volunteers", volunteers);
 // ADD BACKEND ROUTES - END
 
 const port = process.env.PORT || 5000;
