@@ -22,3 +22,20 @@ router.get('/:id', (req, res) => {
 });
 
 // CREATE NEW VOLUNTEEER
+router.post('/new', (req, res) => {
+    const { errors, isValid } = validateVolunteerInput(req.body)
+    const newVolunteer = new Volunteer({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        gender: req.body.gender,
+        phone: req.body.phone,
+        email: req.body.email
+    })
+
+    if(!isValid) {
+        return res.status(400).json(errors);
+    };
+
+    newVolunteer.save()
+        .then(volunteer => res.json(volunteer))
+});
