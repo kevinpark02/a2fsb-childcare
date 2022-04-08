@@ -61,3 +61,5 @@ router.delete('/:id', (req, res) => {
         .then((volunteer) => res.json('Volunteer was successfully deleted'))
         .catch(err => res.status(400).json(err))
 })
+
+module.exports = router;
