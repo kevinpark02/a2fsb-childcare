@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const validateVolunteerInput = require('../../validation/volunteers');
 const Volunteer = require('../../models/Volunteer');
+const { default: mongoose } = require('mongoose');
+const req = require('express/lib/request');
 
 // RETRIEVE ALL VOLUNTEERS
 router.get("/", (req, res) => {
@@ -23,7 +25,7 @@ router.get('/:id', (req, res) => {
 
 // CREATE NEW VOLUNTEEER
 router.post('/new', (req, res) => {
-    const { errors, isValid } = validateVolunteerInput(req.body)
+    const { errors, isValid } = validateVolunteerInput(req.body);
     const newVolunteer = new Volunteer({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -39,3 +41,23 @@ router.post('/new', (req, res) => {
     newVolunteer.save()
         .then(volunteer => res.json(volunteer))
 });
+
+// EDIT VOLUNTEER
+router.patch('/edit/:id', (req,res) => {
+    mongoose.set('useFindAndModify', false);
+    const { errors, isValid } = validateVolunteerInput(req.body);
+
+    if(!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    Volunteer.findByIdAndUpdate(req.params.id, req.body, { new: true})
+        .then((volunteer) => res.json(volunteer))
+});
+
+// DELETE VOLUNTEER
+router.delete('/:id', (req, res) => {
+    Volunteer.findByIdAndDelete(req.params.id)
+        .then((volunteer) => res.json('Volunteer was successfully deleted'))
+        .catch(err => res.status(400).json(err))
+})
