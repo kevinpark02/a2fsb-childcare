@@ -1,7 +1,28 @@
 .main-page {
     text-align: center;
+    padding-top: 8%;
 }
 
 h1 {
+    font-family:'Courier New', Courier, monospace;
     font-size: 5em;
+    color: #B9B4A6;
 }
+
+.main-button {
+    font-size: 2em;
+    color: white;
+    background-color: #d8d8d8;
+    padding: .7em 0em;
+    margin-top: 25px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0em .1em 3px gray;
+    width: 8em;
+    transition-duration: 0.4s;
+  }
+  
+  .main-button:hover {
+    background-color: #979797;
+    color: white;
+  }
