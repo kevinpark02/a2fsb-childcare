@@ -8,13 +8,18 @@ class MainPage extends React.Component {
       <div className="main-page">
         <h1>Seedling<br></br>Scheduling</h1>
         <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
+          <Link to={"/signup"}>
+            <button className="main-button" onClick={"/signup"}>
+              sign up
+            </button>
+          </Link>
           <br></br>
-          <button className="main-button" onClick={"/signup"}>sign up</button>
-          <br></br>
-          <button className="main-button" onClick={"/login"}>log in</button>
-        </div>
+          <Link to={"/login"}>
+            <button className="main-button" onClick={"/login"}>
+              log in
+            </button>
+          </Link>
+          </div>
       </div>
     );
   }
