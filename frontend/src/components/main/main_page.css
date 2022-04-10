@@ -20,6 +20,7 @@ h1 {
     box-shadow: 0em .1em 3px gray;
     width: 8em;
     transition-duration: 0.4s;
+    cursor: pointer;
   }
   
   .main-button:hover {
