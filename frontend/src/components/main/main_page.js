@@ -10,6 +10,10 @@ class MainPage extends React.Component {
         <div>
           <Link to={"/signup"}>Signup</Link>
           <Link to={"/login"}>Login</Link>
+          <br></br>
+          <button className="main-button" onClick={"/signup"}>sign up</button>
+          <br></br>
+          <button className="main-button" onClick={"/login"}>log in</button>
         </div>
       </div>
     );
