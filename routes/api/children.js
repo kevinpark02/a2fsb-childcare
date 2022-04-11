@@ -60,8 +60,22 @@ const { deleteOne } = require("../../models/Child");
             Child.findByIdAndDelete(req.params.id)
                 .then((child) => res.json("Child successfully deleted"))
                 .catch(err => res.status(400).json("Child was not successfully deleted"))
-        }
-    )
+            }
+        )
+        
+        router.put("/:id", (req, res) => {
+            Child.findById(req.params.id)
+            Child.firstName = req.body.firstName
+            Child.lastName = req.body.lastName
+            Child.gender = req.body.gender
+            Child.parents = req.user.id
+            Child
+                .save()
+                .then(child => res.json(child))
+                
+            }
+        )
+        
 //! ADD ROUTES - END
 
 

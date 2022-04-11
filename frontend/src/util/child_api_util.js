@@ -12,6 +12,10 @@ export const createChild = data => {
     return axios.post('/api/children/', data);
 }
 
+export const changeChild = childId => {
+    return axios.put(`/api/children/${childId}`)
+}
+
 export const deleteChild = (childId) => {
     return axios.delete(`/api/children/${childId}`)
 }
