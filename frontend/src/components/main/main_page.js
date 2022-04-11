@@ -6,16 +6,16 @@ class MainPage extends React.Component {
   render() {
     return (
       <div className="main-page">
-        <h1>Seedling<br></br>Scheduling</h1>
+        <h1>Seedling<br/>Scheduling</h1>
         <div>
           <Link to={"/signup"}>
-            <button className="main-button" onClick={"/signup"}>
+            <button className="main-button">
               sign up
             </button>
           </Link>
-          <br></br>
+          <br/>
           <Link to={"/login"}>
-            <button className="main-button" onClick={"/login"}>
+            <button className="main-button">
               log in
             </button>
           </Link>
