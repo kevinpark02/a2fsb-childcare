@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
   // Handle form submission
   handleSubmit(e) {
     e.preventDefault();
-
+    {this.renderErrors()}
     let user = {
       email: this.state.email,
       password: this.state.password,
@@ -59,30 +59,41 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    console.log(this.state.errors);
     return (
       <div className="login-form-container">
         <h1 className="login-title">Log In</h1>
         <form onSubmit={this.handleSubmit}>
           <div>
-            <label className="login-label1">Email</label>
-            <br/>
-            <input
-              className="login-input"
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
+            <div className="login-group">
+              <label className="login-label">
+                Email
+              </label>
+              <label className="error">{this.state.errors["email"]}</label>
+              <br/>
+              <input
+                className="login-input"
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+            </div>
             <br />
-            <label className="login-label2">Password</label>
-            <br/>
-            <input
-              className="login-input"
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
+            <div className="login-group">
+              <label className="login-label">
+                Password
+              </label>
+              <label className="error">{this.state.errors["password"]}</label>
+              <br/>
+              <input
+                className="login-input"
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+            </div>
             <br />
             <div className="button-area">
               <input className="submit-button" type="submit" value="Log in" />
@@ -93,7 +104,7 @@ class LoginForm extends React.Component {
               </Link>
             </div>
             
-            {this.renderErrors()}
+            
           </div>
         </form>
       </div>

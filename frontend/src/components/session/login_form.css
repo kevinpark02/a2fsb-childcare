@@ -9,28 +9,27 @@
     margin: 50px 0px 70px;
 }
 
-.login-label1 {
-    padding-right: 22.6em;
+.login-group {
+    display: inline-block;
     text-align: left;
-    margin: 5.75%;
-    color: #B9B4A6;
+    width: 90%;
+    max-width: 40em;
 }
 
-.login-label2 {
-    padding-right: 21.2em;
-    text-align: left;
-    margin: 5.75%;
+.login-label {
+    margin: 0.75%;
     color: #B9B4A6;
+    margin-right: 1em;
 }
 
 .login-input {
     background-color: white;
     border: none;
     border-radius: 8px;
-    margin: 5px 5% 15px;
+    margin-top: 5px;
+    margin-bottom: 15px;
     padding: .7em .75%;
-    width: 90%;
-    max-width: 30em;
+    width: 100%;
 }
 
 .button-area {
@@ -53,4 +52,12 @@ cursor: pointer;
 .submit-button:hover {
 background-color: #979797;
 color: white;
+}
+
+.error {
+  font-size: .75em;
+  color: #FBA9A4;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
