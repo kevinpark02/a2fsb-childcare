@@ -1,9 +1,10 @@
-import { getChildren, getUserChildren, createChild, deleteChild } from "../util/child_api_util";
+import { getChildren, getUserChildren, createChild, deleteChild, changeChild } from "../util/child_api_util";
 
 export const RECEIVE_CHILDREN = "RECEIVE_CHILDREN";
 export const RECEIVE_USER_CHILDREN = "RECEIVE_USER_CHILDREN";
 export const RECEIVE_NEW_CHILD = "RECEIVE_NEW_CHILD";
 export const CLEAR_CHILD = "CLEAR_CHILD";
+export const EDIT_CHILD = "EDIT_CHILD";
 
 export const receiveChildren = children => ({
     type: RECEIVE_CHILDREN,
@@ -17,6 +18,11 @@ export const receiveUserChildren = children => ({
 
 export const receiveNewChild = child => ({
     type: RECEIVE_NEW_CHILD,
+    child
+});
+
+export const alterChild = child => ({
+    type: EDIT_CHILD,
     child
 });
 
@@ -46,5 +52,11 @@ export const makeChild = data => dispatch => (
 export const removeChild = childId => dispatch => (
     deleteChild(childId)
         .then(() => dispatch(clearChild(childId)))
+        .catch(err => console.log(err))
+);
+
+export const editChild = child => dispatch => (
+    changeChild(child)
+        .then(() => dispatch(alterChild(child)))
         .catch(err => console.log(err))
 );

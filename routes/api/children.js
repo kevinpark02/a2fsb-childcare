@@ -60,8 +60,15 @@ const { deleteOne } = require("../../models/Child");
             Child.findByIdAndDelete(req.params.id)
                 .then((child) => res.json("Child successfully deleted"))
                 .catch(err => res.status(400).json("Child was not successfully deleted"))
-        }
-    )
+            }
+        )
+        
+        router.patch("/edit/:id", (req, res) => {
+            Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
+                .then(child => res.json(child))
+            }
+        )
+        
 //! ADD ROUTES - END
 
 
