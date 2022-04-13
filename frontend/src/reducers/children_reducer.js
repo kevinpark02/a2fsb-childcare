@@ -9,7 +9,6 @@ import {
 const ChildrenReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
     Object.freeze(state);
     let newState = Object.assign({}, state);
-    debugger
     switch(action.type) {
         case RECEIVE_CHILDREN:
             newState.all = action.children.data;

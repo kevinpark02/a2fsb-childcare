@@ -13,6 +13,7 @@ class ChildrenShow extends React.Component {
             firstName: child.firstName,
             lastName: child.lastName,
             gender: child.gender,
+            _id: child._id,
             parents: []
         }
     }
@@ -21,8 +22,10 @@ class ChildrenShow extends React.Component {
         this.props.fetchChildren();
     }
 
-    handleSubmit(child) {
-        this.props.editChild(child)
+    handleSubmit() {
+        this.props.editChild(this.state)
+            .then(() => this.props.history.push(`/children`));
+
     }
 
     update(field) {
@@ -35,6 +38,7 @@ class ChildrenShow extends React.Component {
     }
 
     render(){
+        debugger
         const children = this.props.children;
         const child = children.find(child => child._id === this.props.childId);
         const childId = this.props.childId;
@@ -48,7 +52,7 @@ class ChildrenShow extends React.Component {
         } else {
             return (
                 <div>
-                    <form onSubmit={() => this.handleSubmit(child)}>
+                    <form onSubmit={() => this.handleSubmit()}>
                         <img></img>
                             <input type="text"
                                     value={this.state.firstName}

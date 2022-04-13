@@ -63,16 +63,9 @@ const { deleteOne } = require("../../models/Child");
             }
         )
         
-        router.put("/:id", (req, res) => {
-            Child.findById(req.params.id)
-            Child.firstName = req.body.firstName
-            Child.lastName = req.body.lastName
-            Child.gender = req.body.gender
-            Child.parents = req.user.id
-            Child
-                .save()
+        router.patch("/edit/:id", (req, res) => {
+            Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
                 .then(child => res.json(child))
-                
             }
         )
         
