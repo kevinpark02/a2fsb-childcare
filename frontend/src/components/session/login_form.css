@@ -47,7 +47,6 @@ box-shadow: 0em .1em 3px gray;
 width: 5em;
 transition-duration: 0.4s;
 cursor: pointer;
-text-align: center;
 }
 
 .submit-button:hover {
