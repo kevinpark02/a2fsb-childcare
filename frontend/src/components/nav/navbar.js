@@ -26,22 +26,27 @@ class NavBar extends React.Component {
 
     if (this.props.loggedIn) {
       return (
-        <div className="navbar-container">          
-          <Link to={"/calendar"} className="navbar-menu-link">
-            {calendarIcon}
-            calendar
-          </Link>
-          <Link to={"/children"} className="navbar-menu-link">
-            {childrenIcon}
-            children
-          </Link>
-          <Link to={"/volunteers"} className="navbar-menu-link">
-            {volunteersIcon}
-            volunteers
-          </Link>
-          <button onClick={this.logoutUser}>
-            {logoutIcon}log out
-          </button>
+        <div className="navbar-container"> 
+          <div className="navbar-menu-link navbar-top"></div>
+          <div className="navbar-menu-link navbar-mid">
+            <Link to={"/calendar"} className="navbar-menu-link">
+              {calendarIcon}
+              calendar
+            </Link>
+            <Link to={"/children"} className="navbar-menu-link">
+              {childrenIcon}
+              children
+            </Link>
+            <Link to={"/volunteers"} className="navbar-menu-link">
+              {volunteersIcon}
+              volunteers
+            </Link>
+          </div>
+          <div className="navbar-menu-link navbar-bot">
+            <button onClick={this.logoutUser} className="navbar-menu-link">
+              {logoutIcon}log out
+            </button>
+          </div>         
         </div>
       );
     }
