@@ -19,7 +19,6 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className="navbar-container">
-            <i class="fas-solid fas-hand"></i>
           <Link to={"/calendar"} className="navbar-menu-link">
             calendar
           </Link>
