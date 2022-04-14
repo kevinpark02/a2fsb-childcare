@@ -16,16 +16,17 @@ class ChildrenShow extends React.Component {
             _id: child._id,
             parents: []
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     componentDidMount() {
         this.props.fetchChildren();
     }
 
-    handleSubmit() {
+    handleSubmit(event) {
+        event.preventDefault();
         this.props.editChild(this.state)
             .then(() => this.props.history.push(`/children`));
-
     }
 
     update(field) {
@@ -38,7 +39,6 @@ class ChildrenShow extends React.Component {
     }
 
     render(){
-        debugger
         const children = this.props.children;
         const child = children.find(child => child._id === this.props.childId);
         const childId = this.props.childId;
@@ -52,7 +52,7 @@ class ChildrenShow extends React.Component {
         } else {
             return (
                 <div>
-                    <form onSubmit={() => this.handleSubmit()}>
+                    <form onSubmit={(e) => this.handleSubmit(e)}>
                         <img></img>
                             <input type="text"
                                     value={this.state.firstName}
@@ -73,9 +73,9 @@ class ChildrenShow extends React.Component {
                             value="Submit"/>
                     </form>
                     {/*child.firstName} {" "} {child.lastName*/}
-                    <br></br>
+                    {/* <br></br> */}
                     {/*child.gender*/}
-                    <br></br>
+                    {/* <br></br> */}
                     <input type="file" accept='image/*'/>
                     {/* <button>Upload Profile Picture</button> */}
                     <br></br>
