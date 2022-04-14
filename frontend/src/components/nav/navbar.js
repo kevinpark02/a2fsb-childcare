@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar, faBaby, faHand } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faBaby, faHand, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
 
 
 class NavBar extends React.Component {
@@ -19,9 +19,10 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    const calendarIcon = <FontAwesomeIcon icon={faCalendar} className="navbar-menu-link"/>;
-    const childrenIcon = <FontAwesomeIcon icon={faBaby} className="navbar-menu-link"/>;
-    const volunteersIcon = <FontAwesomeIcon icon={faHand} className="navbar-menu-link"/>;
+    const calendarIcon = <FontAwesomeIcon icon={faCalendar} className="navbar-menu-link navbar-menu-icon"/>;
+    const childrenIcon = <FontAwesomeIcon icon={faBaby} className="navbar-menu-link navbar-menu-icon"/>;
+    const volunteersIcon = <FontAwesomeIcon icon={faHand} className="navbar-menu-link navbar-menu-icon"/>;
+    const logoutIcon = <FontAwesomeIcon icon={faDoorOpen} className="navbar-menu-link navbar-menu-icon"/>;
 
     if (this.props.loggedIn) {
       return (
@@ -38,7 +39,9 @@ class NavBar extends React.Component {
             {volunteersIcon}
             volunteers
           </Link>
-          <button onClick={this.logoutUser}>Logout</button>
+          <button onClick={this.logoutUser}>
+            {logoutIcon}log out
+          </button>
         </div>
       );
     }

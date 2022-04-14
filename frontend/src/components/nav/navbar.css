@@ -2,6 +2,14 @@
     font-family: 'Lexend', sans-serif;
 }
 
+button {
+    border: none;
+    background: none;
+    color: #F7F0DE;
+    font-size: 25px;
+    text-align: left;
+}
+
 .navbar-container {
     background-color: #B9B4A6;
     display: flex;
@@ -11,10 +19,15 @@
     left: 0;
     width: 308px;
     height: 100vh;
+    padding-left: 20px;
 }
 
 .navbar-menu-link {
     background-color: #B9B4A6;
     color: #F7F0DE;
     font-size: 25px;
+}
+
+.navbar-menu-icon {
+    margin-right: 20px;
 }
