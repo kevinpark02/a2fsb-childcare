@@ -73,32 +73,34 @@ class SignupForm extends React.Component {
           <div className="signup-form">
             <br />
             <div className="signup-group">
-              <label className="signup-label">
-                First Name
-              </label>
-              <label className="error">{this.state.errors["firstName"]}</label>
-              <br/>
-            <input
-              className="signup-input"
-              type="text"
-              value={this.state.firstName}
-              onChange={this.update("firstName")}
-              placeholder="First name"
-            />
-            </div>
-            <div className="signup-group">
-              <label className="signup-label">
-                Last Name
-              </label>
-              <label className="error">{this.state.errors["lastName"]}</label>
-              <br/>
-            <input
-              className="signup-input"
-              type="text"
-              value={this.state.lastName}
-              onChange={this.update("lastName")}
-              placeholder="Last name"
-            />
+              <div className="signup-firstName">
+                <label className="signup-label">
+                  First Name
+                </label>
+                <label className="error">{this.state.errors["firstName"]}</label>
+                <br/>
+              <input
+                className="signup-input"
+                type="text"
+                value={this.state.firstName}
+                onChange={this.update("firstName")}
+                placeholder="First name"
+              />
+              </div>
+              <div className="signup-lastName">
+                <label className="signup-label">
+                  Last Name
+                </label>
+                <label className="error">{this.state.errors["lastName"]}</label>
+                <br/>
+              <input
+                className="signup-input"
+                type="text"
+                value={this.state.lastName}
+                onChange={this.update("lastName")}
+                placeholder="Last name"
+              />
+              </div>
             </div>
             <br />
             <div className="signup-group">

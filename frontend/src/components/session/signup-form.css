@@ -8,11 +8,27 @@
 }
 
 .signup-group {
-    padding: 0px 5px;
+    margin: 0px 5px;
     display: inline-block;
     text-align: left;
     width: 90%;
     max-width: 30em;
+}
+
+.signup-firstName {
+    margin-right:1em;
+    display: inline-block;
+    text-align: left;
+    width: 90%;
+    max-width: 15em;
+}
+
+.signup-lastName {
+    margin-left:1em;
+    display: inline-block;
+    text-align: left;
+    width: 90%;
+    max-width: 13em;
 }
 
 .signup-label {
