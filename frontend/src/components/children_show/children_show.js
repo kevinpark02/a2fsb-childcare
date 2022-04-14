@@ -26,7 +26,6 @@ class ChildrenShow extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.editChild(this.state)
-            .then(() => this.props.history.push(`/children`));
     }
 
     update(field) {
