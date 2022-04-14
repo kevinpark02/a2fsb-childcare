@@ -18,9 +18,11 @@ button {
     position: fixed;
     top: 0;
     left: 0;
-    width: 308px;
+    right: 0;
+    width: 15vw;
     height: 100vh;
     padding-left: 30px;
+    z-index: -1;
 }
 
 .navbar-menu-link {
