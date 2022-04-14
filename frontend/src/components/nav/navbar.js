@@ -18,7 +18,7 @@ class NavBar extends React.Component {
   getLinks() {
     if (this.props.loggedIn) {
       return (
-        <div class="navbar-container">
+        <div className="navbar-container">
           <Link to={"/calendar"}>calendar</Link>
           <Link to={"/children"}>children</Link>
           <Link to={"/volunteers"}>volunteers</Link>
