@@ -19,9 +19,15 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className="navbar-container">
-          <Link to={"/calendar"}>calendar</Link>
-          <Link to={"/children"}>children</Link>
-          <Link to={"/volunteers"}>volunteers</Link>
+          <Link to={"/calendar"} className="navbar-menu-link">
+            calendar
+          </Link>
+          <Link to={"/children"} className="navbar-menu-link">
+            children
+          </Link>
+          <Link to={"/volunteers"} className="navbar-menu-link">
+            volunteers
+          </Link>
           <button onClick={this.logoutUser}>Logout</button>
         </div>
       );

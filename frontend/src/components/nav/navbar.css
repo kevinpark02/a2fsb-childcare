@@ -11,6 +11,11 @@
     left: 0;
     width: 308px;
     height: 100vh;
-    padding: 20px 0;
     z-index: -1;
+}
+
+.navbar-menu-link {
+    background-color: #B9B4A6;
+    color: #F7F0DE;
+    font-size: 25px;
 }
