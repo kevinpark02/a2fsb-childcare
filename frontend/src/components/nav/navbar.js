@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid, regular, brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div className="navbar-container">
+          <FontAwesomeIcon icon={solid("user-secret")} />
           <Link to={"/calendar"} className="navbar-menu-link">
             calendar
           </Link>
