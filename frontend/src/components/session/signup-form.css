@@ -2,7 +2,77 @@
     text-align: center;
 }
 
-h1 {
-    font-family: 'Quattrocento', serif;
+.signup-title {
     font-size: 4em;
+    font-family: 'Quattrocento', serif;
+    margin-bottom: 10px;
+}
+
+.signup-group {
+    margin: 0px 5px;
+    display: inline-block;
+    text-align: left;
+    width: 90%;
+    max-width: 30em;
+}
+
+.signup-firstName {
+    display: inline-block;
+    text-align: left;
+    width: 20em;
+    max-width: 55%;
+}
+
+.signup-lastName {
+    margin: 0em 0em 0em 5%;
+    display: inline-block;
+    text-align: left;
+    width: 13em;
+    max-width: 40%;
+}
+
+.signup-label {
+    margin: 0.25em;
+    margin-right: 1em;
+    color: #B9B4A6;
+}
+
+.signup-input {
+    background-color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: .7em .25em;
+    width: 100%;
+}
+
+.button-area {
+    text-align: center;
+}
+.submit-button {
+font-size: 1.25em;
+color: white;
+background-color: #d8d8d8;
+padding: .3em 0em;
+margin: 25px;
+border-radius: 6px;
+border: none;
+box-shadow: 0em .1em 3px gray;
+width: 5em;
+transition-duration: 0.4s;
+cursor: pointer;
+}
+
+.submit-button:hover {
+background-color: #979797;
+color: white;
+}
+
+.error {
+  font-size: .75em;
+  color: #FBA9A4;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
