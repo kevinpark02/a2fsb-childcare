@@ -102,7 +102,7 @@ class SignupForm extends React.Component {
               />
               </div>
             </div>
-            {/* <br />
+            <br />
             <div className="signup-group">
               <label className="signup-label">
                 Gender
@@ -116,7 +116,7 @@ class SignupForm extends React.Component {
               onChange={this.update("gender")}
               placeholder="Gender"
             />
-            </div> */}
+            </div>
             <br />
             <div className="signup-group">
               <label className="signup-label">
