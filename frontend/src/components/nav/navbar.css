@@ -31,22 +31,34 @@ button {
     font-size: 25px;
     margin-bottom: 40px;
     display: flex;
+    border-radius: 2px;
+    border: 1px red solid;
+}
+
+.navbar-menu-link:hover {
+    background-color: #F7F0DE;
+    color: #B9B4A6
 }
 
 .navbar-menu-icon {
+    background-color: #B9B4A6;
+    color: #F7F0DE;
     margin-right: 20px;
 }
 
 .navbar-top {
+    background-color: #B9B4A6;
     height: 20vh;
 }
 
 .navbar-mid {
+    background-color: #B9B4A6;
     display: flex;
     flex-direction: column;
     height: 70vh;
 }
 
 .navbar-bot {
+    background-color: #B9B4A6;
     height: 10vh;
 }

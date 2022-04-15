@@ -19,16 +19,16 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    const calendarIcon = <FontAwesomeIcon icon={faCalendar} className="navbar-menu-link navbar-menu-icon"/>;
-    const childrenIcon = <FontAwesomeIcon icon={faBaby} className="navbar-menu-link navbar-menu-icon"/>;
-    const volunteersIcon = <FontAwesomeIcon icon={faHand} className="navbar-menu-link navbar-menu-icon"/>;
-    const logoutIcon = <FontAwesomeIcon icon={faDoorOpen} className="navbar-menu-link navbar-menu-icon"/>;
+    const calendarIcon = <FontAwesomeIcon icon={faCalendar} className="navbar-menu-icon"/>;
+    const childrenIcon = <FontAwesomeIcon icon={faBaby} className="navbar-menu-icon"/>;
+    const volunteersIcon = <FontAwesomeIcon icon={faHand} className="navbar-menu-icon"/>;
+    const logoutIcon = <FontAwesomeIcon icon={faDoorOpen} className="navbar-menu-icon"/>;
 
     if (this.props.loggedIn) {
       return (
         <div className="navbar-container"> 
-          <div className="navbar-menu-link navbar-top"></div>
-          <div className="navbar-menu-link navbar-mid">
+          <div className="navbar-top"></div>
+          <div className="navbar-mid">
             <Link to={"/calendar"} className="navbar-menu-link">
               {calendarIcon}
               calendar
@@ -42,10 +42,11 @@ class NavBar extends React.Component {
               volunteers
             </Link>
           </div>
-          <div className="navbar-menu-link navbar-bot">
-            <button onClick={this.logoutUser} className="navbar-menu-link">
-              {logoutIcon}log out
-            </button>
+          <div className="navbar-bot">
+            <Link onClick={this.logoutUser} className="navbar-menu-link">
+              {logoutIcon}
+              log out
+            </Link>
           </div>         
         </div>
       );
