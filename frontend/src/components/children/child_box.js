@@ -8,10 +8,16 @@ class ChildBox extends React.Component {
     
     render() {
         const child = this.props.child
-        return(
-            <div>
-                <Link to={`/children/${child._id}`}><button className="">{this.props.firstName + " " + this.props.lastName}</button></Link>
+        return (
+          <Link to={`/children/${child._id}`}>
+            <div className="child-link">
+              <div className="child-temp-pic"></div>
+              <button className="children-index">
+                <p>{this.props.firstName}</p>
+                <p>{this.props.lastName}</p>
+              </button>
             </div>
+          </Link>
         );
     }
 }

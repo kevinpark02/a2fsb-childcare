@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import ChildBox from "./child_box";
 
+import "./children.css";
+
 
 class Children extends React.Component {
     constructor(props) {
@@ -14,21 +16,20 @@ class Children extends React.Component {
 
     componentDidMount() {
         this.props.fetchChildren();
-        // console.log(this.state)
     }
     
-    // componentWillReceiverProps(newState) {
-    //     this.setState({ children: newState.children });
-    // }
-
     render() {
         const children = this.props.children
         console.log(children[0])
 
         const childrenIndex = children.map( child => {
                 return(
-                    <ChildBox key={child._id} child = {child} firstName={child.firstName} lastName={child.lastName}/>
-                    // <div>{child.firstname}</div>
+                    <div>
+                        <ChildBox key={child._id} 
+                                  child = {child} 
+                                  firstName={child.firstName} 
+                                  lastName={child.lastName}/>
+                    </div>
                 )
         })
 
@@ -38,9 +39,12 @@ class Children extends React.Component {
             )
         } else {
             return (
-                <div>
-                    <h2>All Children</h2>
-                    {childrenIndex}
+                <div className="all-children-wrapper">
+                    <h2 className="children-title">All Children</h2>
+                    <div className="children-container">
+                        {childrenIndex}
+                        <button className="add-child-button">+</button>
+                    </div>
                 </div>
             )
         }
