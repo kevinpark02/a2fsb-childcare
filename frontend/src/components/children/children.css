@@ -57,3 +57,11 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 685px) {
+    .children-container {
+        display: grid;
+        grid-template-columns: auto auto auto ;
+        gap: 20px;
+    }
+}
