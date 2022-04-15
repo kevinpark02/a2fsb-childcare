@@ -21,6 +21,7 @@ h1 {
     width: 8em;
     transition-duration: 0.4s;
     cursor: pointer;
+    text-align: center;
   }
   
   .main-button:hover {
