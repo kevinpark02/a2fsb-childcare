@@ -44,3 +44,16 @@
     align-items: center;
     width: 100px;
 }
+
+.add-child-button {
+    background: #76736A;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

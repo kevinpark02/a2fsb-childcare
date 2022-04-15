@@ -16,13 +16,8 @@ class Children extends React.Component {
 
     componentDidMount() {
         this.props.fetchChildren();
-        // console.log(this.state)
     }
     
-    // componentWillReceiverProps(newState) {
-    //     this.setState({ children: newState.children });
-    // }
-
     render() {
         const children = this.props.children
         console.log(children[0])
@@ -48,6 +43,7 @@ class Children extends React.Component {
                     <h2 className="children-title">All Children</h2>
                     <div className="children-container">
                         {childrenIndex}
+                        <button className="add-child-button">+</button>
                     </div>
                 </div>
             )
