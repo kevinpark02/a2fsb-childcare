@@ -19,34 +19,40 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    const calendarIcon = <FontAwesomeIcon icon={faCalendar} className="navbar-menu-link navbar-menu-icon"/>;
-    const childrenIcon = <FontAwesomeIcon icon={faBaby} className="navbar-menu-link navbar-menu-icon"/>;
-    const volunteersIcon = <FontAwesomeIcon icon={faHand} className="navbar-menu-link navbar-menu-icon"/>;
-    const logoutIcon = <FontAwesomeIcon icon={faDoorOpen} className="navbar-menu-link navbar-menu-icon"/>;
+    const calendarIcon = <FontAwesomeIcon icon={faCalendar} className="icon"/>;
+    const childrenIcon = <FontAwesomeIcon icon={faBaby} className="icon"/>;
+    const volunteersIcon = <FontAwesomeIcon icon={faHand} className="icon"/>;
+    const logoutIcon = <FontAwesomeIcon icon={faDoorOpen} className="icon"/>;
 
     if (this.props.loggedIn) {
       return (
-        <div className="navbar-container"> 
-          <div className="navbar-menu-link navbar-top"></div>
-          <div className="navbar-menu-link navbar-mid">
-            <Link to={"/calendar"} className="navbar-menu-link">
-              {calendarIcon}
-              calendar
-            </Link>
-            <Link to={"/children"} className="navbar-menu-link">
-              {childrenIcon}
-              children
-            </Link>
-            <Link to={"/volunteers"} className="navbar-menu-link">
-              {volunteersIcon}
-              volunteers
-            </Link>
-          </div>
-          <div className="navbar-menu-link navbar-bot">
-            <button onClick={this.logoutUser} className="navbar-menu-link">
-              {logoutIcon}log out
-            </button>
-          </div>         
+        <div className="sidebar">
+          <ul className="link-list">
+            <li className="calendar-link">
+              <Link to={"/calendar"} className="link">
+                <div className="icon">{calendarIcon}</div>
+                <span className="item">calendar</span>
+              </Link>
+            </li>
+            <li className="children-link">
+              <Link to={"/children"} className="link">
+                <span className="icon">{childrenIcon}</span>
+                <span className="item">children</span>
+              </Link>
+            </li>
+            <li className="volunteers-link">
+              <Link to={"/volunteers"} className="link">
+                <span className="icon">{volunteersIcon}</span>
+                <span className="item">volunteers</span>
+              </Link>
+            </li>
+            <li className="logout-link">
+              <Link onClick={this.logoutUser} className="link">
+                <span className="icon">{logoutIcon}</span>
+                <span className="item">log out</span>
+              </Link>
+            </li>
+          </ul>
         </div>
       );
     }
