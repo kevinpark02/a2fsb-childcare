@@ -29,25 +29,25 @@ class NavBar extends React.Component {
         <div className="sidebar">
           <ul className="link-list">
             <li className="calendar-link">
-              <Link to={"/calendar"}>
-                <span className="icon">{calendarIcon}</span>
+              <Link to={"/calendar"} className="link">
+                <div className="icon">{calendarIcon}</div>
                 <span className="item">calendar</span>
               </Link>
             </li>
             <li className="children-link">
-              <Link to={"/children"}>
+              <Link to={"/children"} className="link">
                 <span className="icon">{childrenIcon}</span>
                 <span className="item">children</span>
               </Link>
             </li>
             <li className="volunteers-link">
-              <Link to={"/volunteers"}>
+              <Link to={"/volunteers"} className="link">
                 <span className="icon">{volunteersIcon}</span>
                 <span className="item">volunteers</span>
               </Link>
             </li>
             <li className="logout-link">
-              <Link onClick={this.logoutUser}>
+              <Link onClick={this.logoutUser} className="link">
                 <span className="icon">{logoutIcon}</span>
                 <span className="item">log out</span>
               </Link>

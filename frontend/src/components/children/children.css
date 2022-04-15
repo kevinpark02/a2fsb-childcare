@@ -65,3 +65,11 @@
         gap: 20px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .children-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 20px;
+    }
+}

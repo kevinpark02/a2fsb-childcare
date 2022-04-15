@@ -21,7 +21,7 @@ button {
     position: fixed;
     top: 0;
     left: 0;
-    width: 17vw;
+    width: 18vw;
     height: 100%;
     padding-top: 10vh;
     transition: all 0.5s ease;
@@ -59,4 +59,21 @@ button {
 
 .volunteers-link {
     margin-bottom: 35vh;
+}
+
+@media screen and (max-width: 1295px) {
+    .sidebar ul li a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar ul li a .item {
+        display: none;
+    }
+
+    .sidebar ul li a .icon {
+        margin-right: 0;
+    }
 }
