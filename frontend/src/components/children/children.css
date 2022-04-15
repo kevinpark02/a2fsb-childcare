@@ -1,0 +1,10 @@
+* {
+
+}
+
+.all-children-container {
+    position: relative;
+    left: 15vw;
+    top: 10vh;
+    border: 10px black;
+}

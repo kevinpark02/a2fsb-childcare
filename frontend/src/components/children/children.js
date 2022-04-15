@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import ChildBox from "./child_box";
 
+import "./children.css";
+
 
 class Children extends React.Component {
     constructor(props) {
@@ -38,7 +40,7 @@ class Children extends React.Component {
             )
         } else {
             return (
-                <div>
+                <div className="all-children-container">
                     <h2>All Children</h2>
                     {childrenIndex}
                 </div>
