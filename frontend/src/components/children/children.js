@@ -40,7 +40,7 @@ class Children extends React.Component {
         } else {
             return (
                 <div className="all-children-wrapper">
-                    <h2 className="children-title">All Children</h2>
+                    <h2 className="children-title">Children</h2>
                     <div className="children-container">
                         {childrenIndex}
                         <button className="add-child-button">+</button>
