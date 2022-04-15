@@ -41,7 +41,7 @@ class Children extends React.Component {
         } else {
             return (
                 <div className="all-children-container">
-                    <h2>All Children</h2>
+                    <h2 className="children-title">All Children</h2>
                     {childrenIndex}
                 </div>
             )

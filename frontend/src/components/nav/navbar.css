@@ -38,13 +38,13 @@ button {
 }
 
 .navbar-top {
-    height: 10vh;
+    height: 20vh;
 }
 
 .navbar-mid {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 70vh;
 }
 
 .navbar-bot {
