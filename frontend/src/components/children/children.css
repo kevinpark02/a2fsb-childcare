@@ -1,12 +1,46 @@
-.all-children-container {
+.all-children-wrapper {
     position: relative;
     left: 25vw;
     top: 10vh;
-    border: 10px black;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .children-title {
     font-family: 'Quattrocento', serif;
     font-size: 40px;
     color: #76736A;
+    margin-bottom: 50px;
+}
+
+.children-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 30px;
+}
+
+.child-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+
+.child-temp-pic {
+    width: 100px;
+    height: 100px;
+    background: #76736A;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.children-index {
+    font-family: 'Lexend', sans-serif;
+    color: #B9B4A6;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
 }

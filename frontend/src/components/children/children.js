@@ -29,8 +29,12 @@ class Children extends React.Component {
 
         const childrenIndex = children.map( child => {
                 return(
-                    <ChildBox key={child._id} child = {child} firstName={child.firstName} lastName={child.lastName}/>
-                    // <div>{child.firstname}</div>
+                    <div>
+                        <ChildBox key={child._id} 
+                                  child = {child} 
+                                  firstName={child.firstName} 
+                                  lastName={child.lastName}/>
+                    </div>
                 )
         })
 
@@ -40,9 +44,11 @@ class Children extends React.Component {
             )
         } else {
             return (
-                <div className="all-children-container">
+                <div className="all-children-wrapper">
                     <h2 className="children-title">All Children</h2>
-                    {childrenIndex}
+                    <div className="children-container">
+                        {childrenIndex}
+                    </div>
                 </div>
             )
         }
