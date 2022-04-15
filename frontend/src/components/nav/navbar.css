@@ -24,7 +24,6 @@ button {
     width: 18vw;
     height: 100%;
     padding-top: 10vh;
-    transition: all 0.5s ease;
 }
 
 .sidebar ul li a {
