@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { makeChild } from '../../actions/child_actions';
 import CreateChild from './create_child';
+import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        makeChild: data => dispatch(makeChild(data))
+        makeChild: data => dispatch(makeChild(data)),
+        openModal: modal => dispatch(openModal(modal)),
     };
 };
 

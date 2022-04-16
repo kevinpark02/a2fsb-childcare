@@ -3,7 +3,7 @@ import { closeModal } from "../actions/modal_actions";
 import { connect } from "react-redux";
 import NewChildContainer from "../components/children/new_child_container";
 
-function Modal({ modal, childId, closeModal }) {
+function Modal({ modal, closeModal }) {
   if (!modal) {
     return null;
   }
@@ -12,7 +12,7 @@ function Modal({ modal, childId, closeModal }) {
   switch (modal) {
     case "newChild":
       component = (
-        <NewChildContainer childId={childId} closeModal={closeModal} />
+        <NewChildContainer closeModal={closeModal} />
       );
       break;
     default:
