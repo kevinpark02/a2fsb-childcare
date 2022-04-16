@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ChildBox from "./child_box";
+import { Link } from 'react-router-dom';
 
 import "./children.css";
 
@@ -16,6 +17,11 @@ class Children extends React.Component {
 
     componentDidMount() {
         this.props.fetchChildren();
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.props.openModal('newChild');
     }
     
     render() {
@@ -43,7 +49,11 @@ class Children extends React.Component {
                     <h2 className="children-title">Children</h2>
                     <div className="children-container">
                         {childrenIndex}
-                        <button className="add-child-button">+</button>
+                        <Link className="add-child-button"
+                              onClick={this.handleClick}
+                        >
+                            +
+                        </Link>
                     </div>
                 </div>
             )
