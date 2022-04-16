@@ -13,6 +13,8 @@ class Children extends React.Component {
         this.state = {
             children: []
         }
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -26,8 +28,6 @@ class Children extends React.Component {
     
     render() {
         const children = this.props.children
-        console.log(children[0])
-
         const childrenIndex = children.map( child => {
                 return(
                     <div>
