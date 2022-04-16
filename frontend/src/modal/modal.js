@@ -30,8 +30,7 @@ function Modal({ modal, childId, closeModal }) {
 
 const mapStateToProps = (state) => {
   return {
-    modal: state.ui.modal[0],
-    cardId: state.ui.modal[1],
+    modal: state.ui.modal[0]
   };
 };
 
