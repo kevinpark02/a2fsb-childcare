@@ -24,7 +24,8 @@ class CreateChild extends React.Component {
             parents: [this.props.currentUser.id]
         };
 
-        this.props.makeChild(child);
+        this.props.makeChild(child)
+            .then(() => this.props.fetchChildren());
         this.setState({
             firstName: "",
             lastName: "",

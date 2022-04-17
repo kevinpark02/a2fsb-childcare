@@ -10,11 +10,13 @@ import ChildrenContainer from "./children/children_container";
 import ProfileContainer from "./profile/profile_container";
 import NewChildContainer from "./children/new_child_container";
 import ChildrenShowContainer from "./children_show/children_show_container";
+import Modal from "../modal/modal";
 
 import "./app.css"
 
 const App = () => (
   <div>
+    <Modal/>
     <NavBarContainer />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
@@ -22,8 +24,10 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
       <ProtectedRoute exact path="/children" component={ChildrenContainer} />
+      <ProtectedRoute exact path="/children" component={NewChildContainer} />
+      <ProtectedRoute exact path="/children" component={Modal} />
+      
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute exact path="/new_child" component={NewChildContainer} />
       <ProtectedRoute exact path="/children/:id" component={ChildrenShowContainer} />
 
     </Switch>
