@@ -32,7 +32,7 @@ class Children extends React.Component {
                 return(
                     <div>
                         <ChildBox key={child._id} 
-                                  child = {child} 
+                                  child ={child} 
                                   firstName={child.firstName} 
                                   lastName={child.lastName}/>
                     </div>
@@ -45,18 +45,18 @@ class Children extends React.Component {
             )
         } else {
             return (
-                <div className="all-children-wrapper">
-                    <h2 className="children-title">Children</h2>
-                    <div className="children-container">
-                        {childrenIndex}
-                        <Link className="add-child-button"
-                              onClick={this.handleClick}
+              <div className="all-children-wrapper">
+                <h2 className="children-title">Children</h2>
+                <div className="children-container">
+                  {childrenIndex}
+                  <Link onClick={this.handleClick} 
+                        className="add-child-button"
                         >
-                            +
-                        </Link>
-                    </div>
+                    +
+                  </Link>
                 </div>
-            )
+              </div>
+            );
         }
     }
 }

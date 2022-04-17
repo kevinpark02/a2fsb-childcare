@@ -16,6 +16,7 @@ import "./app.css"
 
 const App = () => (
   <div>
+    <Modal/>
     <NavBarContainer />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
@@ -23,9 +24,10 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
       <ProtectedRoute exact path="/children" component={ChildrenContainer} />
+      <ProtectedRoute exact path="/children" component={NewChildContainer} />
       <ProtectedRoute exact path="/children" component={Modal} />
+      
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute exact path="/new_child" component={NewChildContainer} />
       <ProtectedRoute exact path="/children/:id" component={ChildrenShowContainer} />
 
     </Switch>
