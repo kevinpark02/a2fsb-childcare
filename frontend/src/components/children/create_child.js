@@ -1,5 +1,7 @@
 import React from "react";
 import ChildBox from "./child_box";
+import { Link } from 'react-router-dom';
+import "./create_child.css";
 
 class CreateChild extends React.Component {
     constructor(props) {
@@ -40,30 +42,83 @@ class CreateChild extends React.Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <input type="text"
-                            value={this.state.firstName}
-                            onChange={this.update("firstName")}
-                            placeholder="Child's first name"
-                        />
-                        <input type="text"
-                            value={this.state.lastName}
-                            onChange={this.update("lastName")}
-                            placeholder="Child's last name"
-                        />
-                        <input type="text"
-                            value={this.state.gender}
-                            onChange={this.update("gender")}
-                            placeholder="Child's gender"
-                        />
-                        <input type="submit"
-                            value="Submit"/>
-                    </div>
-                </form>
-            </div>
-        )
+          <div className="new-child-form-container">
+            <form onSubmit={this.handleSubmit}>
+              <div className="new-child-form">
+                <br />
+                <div className="new-child-group">
+                  <div className="new-child-firstname">
+                    <label className="new-child-label">First Name</label>
+                    {/* This is where error will render */}
+                    <br />
+                    <input
+                      className="new-child-input"
+                      type="text"
+                      value={this.state.firstName}
+                      onChange={this.update("firstName")}
+                      placeholder="First name"
+                    />
+                  </div>
+                  <div className="new-child-lastName">
+                    <label className="new-child-label">Last Name</label>
+                    {/* This is where error will render */}
+                    <br />
+                  </div>
+                  <input
+                    className="new-child-input"
+                    type="text"
+                    value={this.state.lastName}
+                    onChange={this.update("lastName")}
+                    placeholder="Last name"
+                  />
+                </div>
+                <br />
+                <div className="new-child-group">
+                  <label className="new-child-label">Gender</label>
+                  {/* This is where error will render */}
+                  <br />
+                  <input
+                    className="new-child-input"
+                    type="text"
+                    value={this.state.gender}
+                    onChange={this.update("gender")}
+                    placeholder="Child's gender"
+                  />
+                </div>
+                <br />
+                <div className="new-child-group">
+                  <label className="new-child-label">Birthday</label>
+                  {/* This is where error will render */}
+                  <br />
+                  <input
+                    className="new-child-input"
+                    type="text"
+                    value={this.state.gender}
+                    onChange={this.update("birthday")}
+                    placeholder="Birthday"
+                  />
+                </div>
+                <div className="new-child-group">
+                  <label className="new-child-label">Parents</label>
+                  {/* This is where error will render */}
+                  <br />
+                  <input
+                    className="new-child-input"
+                    type="text"
+                    value={this.state.gender}
+                    onChange={this.update("parents")}
+                    placeholder="Parents"
+                  />
+                </div>
+                <br />
+                <input className="submit-button" type="submit" value="submit" />
+                <Link to={"/children"}>
+                  <button className="submit-button">Cancel</button>
+                </Link>
+              </div>
+            </form>
+          </div>
+        );
     }
 }
 
