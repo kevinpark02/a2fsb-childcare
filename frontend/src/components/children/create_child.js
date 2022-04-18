@@ -44,6 +44,7 @@ class CreateChild extends React.Component {
     }
 
     render() {
+      console.log(this.state)
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -95,7 +96,7 @@ class CreateChild extends React.Component {
                   <br />
                   <input
                     className="new-child-input"
-                    type="text"
+                    type="date"
                     value={this.state.birthday}
                     onChange={this.update("birthday")}
                     placeholder="Birthday"
