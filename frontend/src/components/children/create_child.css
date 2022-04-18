@@ -1,5 +1,17 @@
 .new-child-form-container {
     text-align: center;
+    border-radius: 10px;
+}
+
+.new-child-form {
+    border: 2px black solid ;
+    border-radius: 10px;
+
+}
+
+.new-child-form-inputs {
+    background: white;
+    border-radius: 10px;
 }
 
 .new-child-group {
@@ -8,6 +20,7 @@
     text-align: left;
     width: 90%;
     max-width: 30em;
+    background: white;
 }
 
 .new-child-firstname {
@@ -15,6 +28,7 @@
     text-align: left;
     width: 20em;
     max-width: 55%;
+    background: white;
 }
 
 .new-child-lastName {
@@ -23,16 +37,18 @@
     text-align: left;
     width: 13em;
     max-width: 40%;
+    background: white;
 }
 
 .new-child-label {
     margin: 0.25em;
     margin-right: 1em;
     color: #B9B4A6;
+    background: white;
 }
 
 .new-child-input {
-    background-color: white;
+    background-color: #C4C4C4;
     border: none;
     border-radius: 8px;
     margin-top: 5px;
