@@ -11,6 +11,7 @@ class CreateChild extends React.Component {
             firstName: "",
             lastName: "",
             gender: "",
+            birthday: "",
             parents: []
         }
 
@@ -23,6 +24,7 @@ class CreateChild extends React.Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             gender: this.state.gender,
+            birthday: this.state.birthday,
             parents: [this.props.currentUser.id]
         };
 
@@ -32,6 +34,7 @@ class CreateChild extends React.Component {
             firstName: "",
             lastName: "",
             gender: "",
+            birthday: "",
             parents: []
         });
     }
@@ -43,8 +46,8 @@ class CreateChild extends React.Component {
     render() {
         return (
           <div className="new-child-form-container">
-            <form onSubmit={this.handleSubmit}>
-              <div className="new-child-form">
+            <form onSubmit={this.handleSubmit} className="new-child-form">
+              <div className="new-child-form-inputs">
                 <br />
                 <div className="new-child-group">
                   <div className="new-child-firstname">
@@ -93,7 +96,7 @@ class CreateChild extends React.Component {
                   <input
                     className="new-child-input"
                     type="text"
-                    value={this.state.gender}
+                    value={this.state.birthday}
                     onChange={this.update("birthday")}
                     placeholder="Birthday"
                   />
@@ -105,16 +108,19 @@ class CreateChild extends React.Component {
                   <input
                     className="new-child-input"
                     type="text"
-                    value={this.state.gender}
+                    value={this.state.parents}
                     onChange={this.update("parents")}
                     placeholder="Parents"
                   />
                 </div>
                 <br />
                 <input className="submit-button" type="submit" value="submit" />
-                <Link to={"/children"}>
-                  <button className="submit-button">Cancel</button>
-                </Link>
+                  <input
+                    className="submit-button"
+                    type="submit"
+                    value="cancel"
+                    onClick={() => this.props.closeModal()}
+                  />
               </div>
             </form>
           </div>
