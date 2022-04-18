@@ -63,14 +63,14 @@ class CreateChild extends React.Component {
                     <label className="new-child-label">Last Name</label>
                     {/* This is where error will render */}
                     <br />
+                    <input
+                      className="new-child-input"
+                      type="text"
+                      value={this.state.lastName}
+                      onChange={this.update("lastName")}
+                      placeholder="Last name"
+                    />
                   </div>
-                  <input
-                    className="new-child-input"
-                    type="text"
-                    value={this.state.lastName}
-                    onChange={this.update("lastName")}
-                    placeholder="Last name"
-                  />
                 </div>
                 <br />
                 <div className="new-child-group">
