@@ -46,6 +46,7 @@ const { deleteOne } = require("../../models/Child");
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     gender: req.body.gender,
+                    birthday: req.body.birthday,
                     parents: req.user.id
                 });
 
