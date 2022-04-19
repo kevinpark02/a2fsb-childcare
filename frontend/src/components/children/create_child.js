@@ -70,7 +70,7 @@ class CreateChild extends React.Component {
                 <div className="new-child-group">
                   <div className="new-child-firstname">
                     <label className="new-child-label">First Name</label>
-                    <label className="error">
+                    <label className="child-error">
                       {this.state.errors["firstName"]}
                     </label>
                     <br />
@@ -84,7 +84,7 @@ class CreateChild extends React.Component {
                   </div>
                   <div className="new-child-lastName">
                     <label className="new-child-label">Last Name</label>
-                    <label className="error">
+                    <label className="child-error">
                       {this.state.errors["lastName"]}
                     </label>
                     <br />
@@ -100,7 +100,7 @@ class CreateChild extends React.Component {
                 <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Gender</label>
-                  <label className="error">{this.state.errors["gender"]}</label>
+                  <label className="child-error">{this.state.errors["gender"]}</label>
                   <br />
                   <input
                     className="new-child-input"
@@ -113,7 +113,9 @@ class CreateChild extends React.Component {
                 <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Birthday</label>
-                  <label className="error">{this.state.errors["birthday"]}</label>
+                  <label className="child-error">
+                    {this.state.errors["birthday"]}
+                  </label>
                   <br />
                   <input
                     className="new-child-input"
