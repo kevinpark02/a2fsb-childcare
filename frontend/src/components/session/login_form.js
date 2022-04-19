@@ -59,7 +59,6 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.errors);
     return (
       <div className="login-form-container">
         <h1 className="login-title">Log In</h1>
