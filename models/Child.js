@@ -14,6 +14,10 @@ const ChildSchema = new Schema({
         type: String,
         required: true,
     },
+    birthday: {
+        type: String,
+        required: true,
+    },
     parents: [{
         type: Schema.Types.ObjectId,
         ref: 'users',

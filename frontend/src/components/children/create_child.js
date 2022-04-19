@@ -12,14 +12,21 @@ class CreateChild extends React.Component {
             lastName: "",
             gender: "",
             birthday: "",
-            parents: []
+            parents: [],
+            errors: {},
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+      this.setState({ errors: nextProps.errors });
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        {this.renderErrors()}
         let child = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -39,6 +46,16 @@ class CreateChild extends React.Component {
         });
     }
 
+    renderErrors() {
+      return(
+        <ul>
+          {Object.keys(this.state.errors).map((error, i) => (
+            <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          ))}
+        </ul>
+      )
+    }
+
     update(field) {
         return e => this.setState({ [field]: e.target.value })
     }
@@ -53,7 +70,9 @@ class CreateChild extends React.Component {
                 <div className="new-child-group">
                   <div className="new-child-firstname">
                     <label className="new-child-label">First Name</label>
-                    {/* This is where error will render */}
+                    <label className="child-error">
+                      {this.state.errors["firstName"]}
+                    </label>
                     <br />
                     <input
                       className="new-child-input"
@@ -65,7 +84,9 @@ class CreateChild extends React.Component {
                   </div>
                   <div className="new-child-lastName">
                     <label className="new-child-label">Last Name</label>
-                    {/* This is where error will render */}
+                    <label className="child-error">
+                      {this.state.errors["lastName"]}
+                    </label>
                     <br />
                     <input
                       className="new-child-input"
@@ -79,7 +100,7 @@ class CreateChild extends React.Component {
                 <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Gender</label>
-                  {/* This is where error will render */}
+                  <label className="child-error">{this.state.errors["gender"]}</label>
                   <br />
                   <input
                     className="new-child-input"
@@ -92,7 +113,9 @@ class CreateChild extends React.Component {
                 <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Birthday</label>
-                  {/* This is where error will render */}
+                  <label className="child-error">
+                    {this.state.errors["birthday"]}
+                  </label>
                   <br />
                   <input
                     className="new-child-input"
@@ -104,7 +127,7 @@ class CreateChild extends React.Component {
                 </div>
                 <div className="new-child-group">
                   <label className="new-child-label">Parents</label>
-                  {/* This is where error will render */}
+                  {/* <label className="error">{this.state.errors["firstName"]}</label> */}
                   <br />
                   <input
                     className="new-child-input"
@@ -116,12 +139,12 @@ class CreateChild extends React.Component {
                 </div>
                 <br />
                 <input className="submit-button" type="submit" value="submit" />
-                  <input
-                    className="submit-button"
-                    type="submit"
-                    value="cancel"
-                    onClick={() => this.props.closeModal()}
-                  />
+                <input
+                  className="submit-button"
+                  type="submit"
+                  value="cancel"
+                  onClick={() => this.props.closeModal()}
+                />
               </div>
             </form>
           </div>

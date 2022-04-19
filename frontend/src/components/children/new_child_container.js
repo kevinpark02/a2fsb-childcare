@@ -5,7 +5,8 @@ import CreateChild from './create_child';
 const mapStateToProps = (state) => {
     return {
         currentUser: state.session.user,
-        newChild: state.children.new
+        newChild: state.children.new,
+        errors: state.error.child,
     };
 };
 

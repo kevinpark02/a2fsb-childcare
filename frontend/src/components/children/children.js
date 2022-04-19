@@ -41,8 +41,16 @@ class Children extends React.Component {
 
         if (children.length === 0) {
             return (
-                <div>There are no children</div>
-            )
+              <div className="all-children-wrapper">
+                <h2 className="children-title">Children</h2>
+                <div className="children-container">
+                  <Link onClick={this.handleClick} 
+                        className="add-child-button">
+                    +
+                  </Link>
+                </div>
+              </div>
+            );
         } else {
             return (
               <div className="all-children-wrapper">
@@ -50,8 +58,7 @@ class Children extends React.Component {
                 <div className="children-container">
                   {childrenIndex}
                   <Link onClick={this.handleClick} 
-                        className="add-child-button"
-                        >
+                        className="add-child-button">
                     +
                   </Link>
                 </div>
