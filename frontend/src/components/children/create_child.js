@@ -20,6 +20,10 @@ class CreateChild extends React.Component {
         this.renderErrors = this.renderErrors.bind(this);
     }
 
+    componentDidMount() {
+      this.props.fetchVolunteers();
+    }
+
     componentWillReceiveProps(nextProps) {
       this.setState({ errors: nextProps.errors });
     }

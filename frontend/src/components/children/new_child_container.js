@@ -4,9 +4,11 @@ import { fetchVolunteers } from '../../actions/volunteer_actions';
 import CreateChild from './create_child';
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         currentUser: state.session.user,
         newChild: state.children.new,
+        volunteers: state.volunteers,
         errors: state.error.child,
     };
 };
