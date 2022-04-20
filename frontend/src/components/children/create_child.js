@@ -1,6 +1,7 @@
 import React from "react";
 import ChildBox from "./child_box";
 import { Link } from 'react-router-dom';
+import Multiselect from "multiselect-react-dropdown";
 import "./create_child.css";
 
 class CreateChild extends React.Component {
@@ -65,7 +66,6 @@ class CreateChild extends React.Component {
     }
 
     render() {
-      console.log(this.state)
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -133,12 +133,15 @@ class CreateChild extends React.Component {
                   <label className="new-child-label">Parents</label>
                   {/* <label className="error">{this.state.errors["firstName"]}</label> */}
                   <br />
-                  <input
+                  {/* <input
                     className="new-child-input"
                     type="text"
                     value={this.state.parents}
                     onChange={this.update("parents")}
                     placeholder="Parents"
+                  /> */}
+                  <Multiselect
+                    options={this.props.volunteers}
                   />
                 </div>
                 <br />
