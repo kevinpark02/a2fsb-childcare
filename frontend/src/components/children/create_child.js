@@ -66,6 +66,36 @@ class CreateChild extends React.Component {
     }
 
     render() {
+  const options=[
+    {
+      cat: 'Group 1',
+      key: 'Option 1'
+    },
+    {
+      cat: 'Group 1',
+      key: 'Option 2'
+    },
+    {
+      cat: 'Group 1',
+      key: 'Option 3'
+    },
+    {
+      cat: 'Group 2',
+      key: 'Option 4'
+    },
+    {
+      cat: 'Group 2',
+      key: 'Option 5'
+    },
+    {
+      cat: 'Group 2',
+      key: 'Option 6'
+    },
+    {
+      cat: 'Group 2',
+      key: 'Option 7'
+    }
+  ]
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -140,9 +170,7 @@ class CreateChild extends React.Component {
                     onChange={this.update("parents")}
                     placeholder="Parents"
                   /> */}
-                  <Multiselect
-                    options={this.props.volunteers}
-                  />
+                  <Multiselect options={options}/>
                 </div>
                 <br />
                 <input className="submit-button" type="submit" value="submit" />
