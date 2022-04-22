@@ -19,6 +19,8 @@ class CreateChild extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.renderParentsOptions = this.renderParentsOptions.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
     }
 
     componentDidMount() {
@@ -65,37 +67,21 @@ class CreateChild extends React.Component {
         return e => this.setState({ [field]: e.target.value })
     }
 
-    render() {
-  const options=[
-    {
-      cat: 'Group 1',
-      key: 'Option 1'
-    },
-    {
-      cat: 'Group 1',
-      key: 'Option 2'
-    },
-    {
-      cat: 'Group 1',
-      key: 'Option 3'
-    },
-    {
-      cat: 'Group 2',
-      key: 'Option 4'
-    },
-    {
-      cat: 'Group 2',
-      key: 'Option 5'
-    },
-    {
-      cat: 'Group 2',
-      key: 'Option 6'
-    },
-    {
-      cat: 'Group 2',
-      key: 'Option 7'
+    renderParentsOptions() {
+      let options = Object.values(this.props.volunteers);
+      options.forEach(volunteer => {
+        volunteer.fullName = volunteer.firstName + " " + volunteer.lastName;
+      })
+      return options;
     }
-  ]
+
+    handleSelect() {
+      
+    }
+
+    render() {
+        const options= Object.values(this.props.volunteers);
+        console.log(options);
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -134,7 +120,9 @@ class CreateChild extends React.Component {
                 <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Gender</label>
-                  <label className="child-error">{this.state.errors["gender"]}</label>
+                  <label className="child-error">
+                    {this.state.errors["gender"]}
+                  </label>
                   <br />
                   <input
                     className="new-child-input"
@@ -170,7 +158,14 @@ class CreateChild extends React.Component {
                     onChange={this.update("parents")}
                     placeholder="Parents"
                   /> */}
-                  <Multiselect options={options}/>
+                  <Multiselect
+                    displayValue="fullName"
+                    onKeyPressFn={function noRefCheck() {}}
+                    onRemove={function noRefCheck() {}}
+                    onSearch={function noRefCheck() {}}
+                    onSelect={function noRefCheck() {}}
+                    options={this.renderParentsOptions()}
+                  />
                 </div>
                 <br />
                 <input className="submit-button" type="submit" value="submit" />
