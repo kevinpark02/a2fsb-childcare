@@ -75,8 +75,14 @@ class CreateChild extends React.Component {
       return options;
     }
 
-    handleSelect() {
-      
+    handleSelect(parents) {
+      this.setState({
+        parents: []
+      });
+
+      parents.forEach(parent => {
+        this.state.parents.push(parent._id)
+      });
     }
 
     render() {
@@ -163,8 +169,9 @@ class CreateChild extends React.Component {
                     onKeyPressFn={function noRefCheck() {}}
                     onRemove={function noRefCheck() {}}
                     onSearch={function noRefCheck() {}}
-                    onSelect={function noRefCheck() {}}
+                    onSelect={(value) => this.handleSelect(value)}
                     options={this.renderParentsOptions()}
+                    selectionLimit={2}
                   />
                 </div>
                 <br />
