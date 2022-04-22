@@ -32,6 +32,7 @@ class CreateChild extends React.Component {
     }
 
     handleSubmit(e) {
+      debugger
         e.preventDefault();
         {this.renderErrors()}
         let child = {
@@ -39,7 +40,7 @@ class CreateChild extends React.Component {
             lastName: this.state.lastName,
             gender: this.state.gender,
             birthday: this.state.birthday,
-            parents: [this.props.currentUser.id]
+            parents: this.state.parents
         };
 
         this.props.makeChild(child)
@@ -81,13 +82,14 @@ class CreateChild extends React.Component {
       });
 
       parents.forEach(parent => {
-        this.state.parents.push(parent._id)
+        this.setState({
+          parents: this.state.parents.concat([parent._id]),
+        });
       });
     }
 
     render() {
         const options= Object.values(this.props.volunteers);
-        console.log(options);
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
