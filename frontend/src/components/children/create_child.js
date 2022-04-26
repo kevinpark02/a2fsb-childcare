@@ -20,10 +20,14 @@ class CreateChild extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.renderParentsOptions = this.renderParentsOptions.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
+        this.handleActions = this.handleActions.bind(this);
+
     }
 
     componentDidMount() {
+      this.setState({
+        errors: {}
+      });
       this.props.fetchVolunteers();
     }
 
@@ -32,9 +36,8 @@ class CreateChild extends React.Component {
     }
 
     handleSubmit(e) {
-      debugger
         e.preventDefault();
-        {this.renderErrors()}
+        this.renderErrors()
         let child = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -50,7 +53,8 @@ class CreateChild extends React.Component {
             lastName: "",
             gender: "",
             birthday: "",
-            parents: []
+            parents: [],
+            errors: {}
         });
     }
 
@@ -76,7 +80,7 @@ class CreateChild extends React.Component {
       return options;
     }
 
-    handleSelect(parents) {
+    handleActions(parents) {
       this.setState({
         parents: []
       });
@@ -86,6 +90,7 @@ class CreateChild extends React.Component {
           parents: this.state.parents.concat([parent._id]),
         });
       });
+      console.log(this.state.parents);
     }
 
     render() {
@@ -157,21 +162,14 @@ class CreateChild extends React.Component {
                 </div>
                 <div className="new-child-group">
                   <label className="new-child-label">Parents</label>
-                  {/* <label className="error">{this.state.errors["firstName"]}</label> */}
+                  <label className="error">{this.state.errors["parents"]}</label>
                   <br />
-                  {/* <input
-                    className="new-child-input"
-                    type="text"
-                    value={this.state.parents}
-                    onChange={this.update("parents")}
-                    placeholder="Parents"
-                  /> */}
                   <Multiselect
                     displayValue="fullName"
                     onKeyPressFn={function noRefCheck() {}}
-                    onRemove={function noRefCheck() {}}
+                    onRemove={(value) => this.handleActions(value)}
                     onSearch={function noRefCheck() {}}
-                    onSelect={(value) => this.handleSelect(value)}
+                    onSelect={(value) => this.handleActions(value)}
                     options={this.renderParentsOptions()}
                     selectionLimit={2}
                   />

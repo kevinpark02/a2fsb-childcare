@@ -6,6 +6,7 @@ export const RECEIVE_NEW_CHILD = "RECEIVE_NEW_CHILD";
 export const CLEAR_CHILD = "CLEAR_CHILD";
 export const EDIT_CHILD = "EDIT_CHILD";
 export const RECEIVE_CHILD_ERRORS = "RECEIVE_CHILD_ERRORS";
+export const REMOVE_CHILD_ERRORS = "REMOVE_CHILD_ERRORS";
 
 export const receiveChildren = children => ({
     type: RECEIVE_CHILDREN,
@@ -35,6 +36,10 @@ export const clearChild = childId => ({
 export const receiveErrors = (errors) => ({
     type: RECEIVE_CHILD_ERRORS,
     errors,
+})
+
+export const removeChildErrors = () => ({
+    type: REMOVE_CHILD_ERRORS
 })
 
 export const fetchChildren = () => dispatch => (
