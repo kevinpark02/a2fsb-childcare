@@ -25,10 +25,8 @@ class CreateChild extends React.Component {
     }
 
     componentDidMount() {
-      this.setState({
-        errors: {}
-      });
-      this.props.fetchVolunteers();
+      this.props.fetchVolunteers()
+        .then(() => this.props.removeChildErrors())
     }
 
     componentWillReceiveProps(nextProps) {

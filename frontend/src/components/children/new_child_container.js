@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchChildren, makeChild } from '../../actions/child_actions';
+import { fetchChildren, makeChild, removeChild, removeChildErrors } from '../../actions/child_actions';
 import { fetchVolunteers } from '../../actions/volunteer_actions';
 import CreateChild from './create_child';
 
@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => {
         makeChild: data => dispatch(makeChild(data)),
         fetchChildren: () => dispatch(fetchChildren()),
         fetchVolunteers: () => dispatch(fetchVolunteers()),
+        removeChildErrors: () => dispatch(removeChildErrors()),
     };
 };
 
