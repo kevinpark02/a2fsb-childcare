@@ -85,3 +85,15 @@
     padding: 0;
     background: white;
 }
+
+input[type=date] {
+    color: grey
+}
+
+select {
+    color: grey
+}
+
+.closeIcon {
+    background: red;
+}
