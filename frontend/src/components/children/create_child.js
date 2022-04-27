@@ -49,7 +49,7 @@ class CreateChild extends React.Component {
             lastName: "",
             gender: "",
             birthday: "",
-            parents: []
+            parents: this.state.parents.splice(0, this.state.parents.length)
         });
     }
 
