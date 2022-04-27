@@ -88,18 +88,27 @@ class CreateChild extends React.Component {
     }
 
     handleRemove(parents) {
-      this.setState({
-        parents: []
-      });
-
-      if (parents.length !== 0) {
+      // because I'm limiting it to two selections, parents will either be an empty array
+      // or it will have one parent
+      if (parents.length === 0) {
         this.setState({
-          parents: this.state.parents.concat([parents[0]._id])
+          parents: []
         })
+      } else {
+        if (this.state.parents.indexOf(parents[0]._id) === 0) {
+          this.setState({
+            parents: this.state.parents.splice(0,1)
+          })
+        } else {
+          this.setState({
+            parents: this.state.parents.splice(1)
+          })
+        }
       }
     }
 
     render() {
+      console.log(this.state.parents)
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -183,7 +192,6 @@ class CreateChild extends React.Component {
                       chips: {
                         background: "#f7f0de",
                         color: 'black',
-                        'margin-bottom': 'none'
                       },
                       closeIcon: {
                         color: 'black'
