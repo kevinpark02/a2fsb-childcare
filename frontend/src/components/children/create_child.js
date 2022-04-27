@@ -189,13 +189,15 @@ class CreateChild extends React.Component {
                     onSelect={(value) => this.handleSelect(value)}
                     options={this.renderParentsOptions()}
                     selectionLimit={2}
+                    closeIcon='close'
                     style={{
                       chips: {
                         background: "#f7f0de",
                         color: 'black',
                       },
                       closeIcon: {
-                        color: 'black'
+                        color: 'red',
+                        background: 'red'
                       },
                       searchBox: {
                         "border-radius": "8px",
@@ -203,12 +205,6 @@ class CreateChild extends React.Component {
                         "background-color": "#c4c4c4",
                         height: "50px;",
                         margin: 'none'
-                      },
-                      searchWrapper: {
-                        "background-color": "#c4c4c4",
-                      },
-                      "multiSelectContainer input": {
-                        border: "red",
                       },
                     }}
                   />
