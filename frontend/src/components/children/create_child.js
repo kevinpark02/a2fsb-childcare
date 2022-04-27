@@ -43,7 +43,8 @@ class CreateChild extends React.Component {
         };
 
         this.props.makeChild(child)
-            .then(() => this.props.fetchChildren());
+            .then(() => this.props.closeModal())
+            .then(() => this.props.fetchChildren())
         this.setState({
             firstName: "",
             lastName: "",
