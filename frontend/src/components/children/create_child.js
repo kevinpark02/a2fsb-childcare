@@ -1,6 +1,4 @@
 import React from "react";
-import ChildBox from "./child_box";
-import { Link } from 'react-router-dom';
 import Multiselect from "multiselect-react-dropdown";
 import "./create_child.css";
 
@@ -20,8 +18,8 @@ class CreateChild extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.renderParentsOptions = this.renderParentsOptions.bind(this);
-        this.handleActions = this.handleActions.bind(this);
-
+        this.handleActions = this.handleSelect.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
     }
 
     componentDidMount() {
@@ -51,8 +49,7 @@ class CreateChild extends React.Component {
             lastName: "",
             gender: "",
             birthday: "",
-            parents: [],
-            errors: {}
+            parents: []
         });
     }
 
@@ -78,7 +75,7 @@ class CreateChild extends React.Component {
       return options;
     }
 
-    handleActions(parents) {
+    handleSelect(parents) {
       this.setState({
         parents: []
       });
@@ -88,11 +85,21 @@ class CreateChild extends React.Component {
           parents: this.state.parents.concat([parent._id]),
         });
       });
-      console.log(this.state.parents);
+    }
+
+    handleRemove(parents) {
+      this.setState({
+        parents: []
+      });
+
+      if (parents.length !== 0) {
+        this.setState({
+          parents: this.state.parents.concat([parents[0]._id])
+        })
+      }
     }
 
     render() {
-        const options= Object.values(this.props.volunteers);
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -160,16 +167,41 @@ class CreateChild extends React.Component {
                 </div>
                 <div className="new-child-group">
                   <label className="new-child-label">Parents</label>
-                  <label className="error">{this.state.errors["parents"]}</label>
+                  <label className="error">
+                    {this.state.errors["parents"]}
+                  </label>
                   <br />
                   <Multiselect
                     displayValue="fullName"
                     onKeyPressFn={function noRefCheck() {}}
-                    onRemove={(value) => this.handleActions(value)}
+                    onRemove={(value) => this.handleRemove(value)}
                     onSearch={function noRefCheck() {}}
-                    onSelect={(value) => this.handleActions(value)}
+                    onSelect={(value) => this.handleSelect(value)}
                     options={this.renderParentsOptions()}
                     selectionLimit={2}
+                    style={{
+                      chips: {
+                        background: "#f7f0de",
+                        color: 'black',
+                        'margin-bottom': 'none'
+                      },
+                      closeIcon: {
+                        color: 'black'
+                      },
+                      searchBox: {
+                        "border-radius": "8px",
+                        border: "none",
+                        "background-color": "#c4c4c4",
+                        height: "50px;",
+                        margin: 'none'
+                      },
+                      searchWrapper: {
+                        "background-color": "#c4c4c4",
+                      },
+                      "multiSelectContainer input": {
+                        border: "red",
+                      },
+                    }}
                   />
                 </div>
                 <br />
