@@ -43,7 +43,6 @@ class CreateChild extends React.Component {
         };
 
         this.props.makeChild(child)
-            .then(() => this.props.closeModal())
             .then(() => this.props.fetchChildren())
         this.setState({
             firstName: "",
@@ -177,7 +176,7 @@ class CreateChild extends React.Component {
                 </div>
                 <div className="new-child-group">
                   <label className="new-child-label">Parents</label>
-                  <label className="error">
+                  <label className="child-error">
                     {this.state.errors["parents"]}
                   </label>
                   <br />
