@@ -43,16 +43,26 @@ class CreateChild extends React.Component {
             parents: this.state.parents
         };
 
-        this.props.makeChild(child)
-            .then(() => this.props.fetchChildren())
+        this.props
+          .makeChild(child)
+          .then(() => this.props.fetchChildren())
+          .then(() =>
+            this.setState({
+              firstName: "",
+              lastName: "",
+              gender: "",
+              birthday: "",
+              parents: this.state.parents.splice(0, this.state.parents.length)
+            })
+          );
 
-        this.setState({
-            firstName: "",
-            lastName: "",
-            gender: "",
-            birthday: "",
-            // parents: this.state.parents.splice(0, this.state.parents.length)
-        });
+        // this.setState({
+        //     firstName: "",
+        //     lastName: "",
+        //     gender: "",
+        //     birthday: "",
+        //     parents: this.state.parents.splice(0, this.state.parents.length)
+        // });
     }
 
     renderErrors() {
@@ -110,7 +120,6 @@ class CreateChild extends React.Component {
     }
 
     render() {
-      console.log(this.state.parents)
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
