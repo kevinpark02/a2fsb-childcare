@@ -151,13 +151,23 @@ class CreateChild extends React.Component {
                     {this.state.errors["gender"]}
                   </label>
                   <br />
-                  <input
+                  <select 
+                    className="new-child-input"
+                    value ={this.state.gender}
+                    onChange={this.update('gender')}
+                    placeholder="Please Select Gender"
+                  >
+                    <option value="" disabled selected>Select child's gender</option>
+                    <option value="Male">Male</option>
+                    <option valeu="Female">Female</option>
+                  </select>
+                  {/* <input
                     className="new-child-input"
                     type="text"
                     value={this.state.gender}
                     onChange={this.update("gender")}
                     placeholder="Child's gender"
-                  />
+                  /> */}
                 </div>
                 <br />
                 <div className="new-child-group">
