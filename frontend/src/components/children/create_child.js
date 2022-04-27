@@ -43,26 +43,17 @@ class CreateChild extends React.Component {
             parents: this.state.parents
         };
 
-        this.props
-          .makeChild(child)
+        this.props.makeChild(child)
           .then(() => this.props.fetchChildren())
-          .then(() =>
-            this.setState({
-              firstName: "",
-              lastName: "",
-              gender: "",
-              birthday: "",
-              parents: this.state.parents.splice(0, this.state.parents.length)
-            })
-          );
 
-        // this.setState({
-        //     firstName: "",
-        //     lastName: "",
-        //     gender: "",
-        //     birthday: "",
-        //     parents: this.state.parents.splice(0, this.state.parents.length)
-        // });
+        if (this.state.firstName !== "" &&
+            this.state.lastName !== "" &&
+            this.state.gender !== "" &&
+            this.state.birthday !== "" &&
+            this.state.parents.length > 0) {
+              this.props.fetchChildren()
+                .then(() => this.props.closeModal())
+            }
     }
 
     renderErrors() {
