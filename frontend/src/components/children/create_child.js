@@ -34,6 +34,7 @@ class CreateChild extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.renderErrors()
+
         let child = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -43,14 +44,16 @@ class CreateChild extends React.Component {
         };
 
         this.props.makeChild(child)
-            .then(() => this.props.fetchChildren())
-        this.setState({
-            firstName: "",
-            lastName: "",
-            gender: "",
-            birthday: "",
-            parents: this.state.parents.splice(0, this.state.parents.length)
-        });
+          .then(() => this.props.fetchChildren())
+
+        if (this.state.firstName !== "" &&
+            this.state.lastName !== "" &&
+            this.state.gender !== "" &&
+            this.state.birthday !== "" &&
+            this.state.parents.length > 0) {
+              this.props.fetchChildren()
+                .then(() => this.props.closeModal())
+            }
     }
 
     renderErrors() {
@@ -108,7 +111,6 @@ class CreateChild extends React.Component {
     }
 
     render() {
-      console.log(this.state.parents)
         return (
           <div className="new-child-form-container">
             <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -161,13 +163,6 @@ class CreateChild extends React.Component {
                     <option value="Male">Male</option>
                     <option valeu="Female">Female</option>
                   </select>
-                  {/* <input
-                    className="new-child-input"
-                    type="text"
-                    value={this.state.gender}
-                    onChange={this.update("gender")}
-                    placeholder="Child's gender"
-                  /> */}
                 </div>
                 <br />
                 <div className="new-child-group">

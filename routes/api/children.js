@@ -21,7 +21,7 @@ const { deleteOne } = require("../../models/Child");
         router.get("/", (req, res) => {
             Child
                 .find()
-                .sort({ date: -1 })
+                .sort({ birthday: 1 })
                 .then(children => res.json(children))
                 .catch(err => res.status(400).json(err))
         })
