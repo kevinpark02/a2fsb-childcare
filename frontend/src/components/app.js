@@ -25,6 +25,7 @@ const App = () => (
 
       <ProtectedRoute exact path="/children" component={ChildrenContainer} />
       <ProtectedRoute exact path="/children" component={NewChildContainer} />
+      <ProtectedRoute exact path="/children" component={ChildrenShowContainer} />
       <ProtectedRoute exact path="/children" component={Modal} />
       
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
