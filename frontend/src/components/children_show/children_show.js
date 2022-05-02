@@ -15,6 +15,7 @@ class ChildrenShow extends React.Component {
             gender: child.gender,
             birthday: child.birthday,
             parents: child.parents,
+            _id: child._id,
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -26,6 +27,7 @@ class ChildrenShow extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.editChild(this.state)
+            .then(this.props.fetchChildren());
     }
 
     update(field) {
