@@ -5,11 +5,13 @@ import { fetchChildren, removeChild, editChild } from '../../actions/child_actio
 import ChildrenShow from './children_show';
 
 
-const mSTP = (state, ownProps) => ({
-    childId: ownProps.match.params.id,
-    children: Object.values(state.children.all)
-    
-});
+const mSTP = (state, ownProps) => {
+    debugger
+    return {
+        childId: ownProps.childId,
+        children: Object.values(state.children.all)
+    }
+};
 
 const mDTP = dispatch => ({
     fetchChildren: () => dispatch(fetchChildren()),

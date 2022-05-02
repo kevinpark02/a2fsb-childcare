@@ -41,10 +41,6 @@ class ChildrenShow extends React.Component {
         const children = this.props.children;
         const child = children.find(child => child._id === this.props.childId);
         const childId = this.props.childId;
-        console.log(child);
-
-        // const inputRef = useRef();
-        // const triggerFileSelectPopup = () => inputRef.current.click();
 
         if (children.length === 0) {
             return null
@@ -71,12 +67,7 @@ class ChildrenShow extends React.Component {
                             <input type="submit"
                             value="Submit"/>
                     </form>
-                    {/*child.firstName} {" "} {child.lastName*/}
-                    {/* <br></br> */}
-                    {/*child.gender*/}
-                    {/* <br></br> */}
                     <input type="file" accept='image/*'/>
-                    {/* <button>Upload Profile Picture</button> */}
                     <br></br>
                     <button className="" onClick={() => this.handleDelete(childId)}>Delete</button>
                 </div>
