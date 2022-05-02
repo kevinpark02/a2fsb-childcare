@@ -32,7 +32,7 @@ class Children extends React.Component {
                 return(
                     <div>
                         <ChildBox key={child._id} 
-                                  child ={child} 
+                                  child ={child}
                                   firstName={child.firstName} 
                                   lastName={child.lastName}
                                   openModal={this.props.openModal}/>

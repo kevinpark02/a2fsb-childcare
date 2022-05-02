@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class ChildBox extends React.Component {
     constructor(props){
@@ -8,15 +8,17 @@ class ChildBox extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(e) {
-      e.preventDefault();
-      this.props.openModal('editChild')
+    handleClick(childId) {
+      // e.preventDefault();
+      this.props.openModal('editChild', childId);
+      debugger
     }
     
     render() {
+      debugger
         const child = this.props.child
         return (
-          <Link onClick={this.handleClick}to={`/children/${child._id}`}>
+          <Link onClick={() => this.handleClick(child._id)}>
             <div className="child-link">
               <div className="child-temp-pic"></div>
               <button className="children-index">
@@ -29,4 +31,4 @@ class ChildBox extends React.Component {
     }
 }
 
-export default ChildBox;
+export default withRouter(ChildBox);
