@@ -8,17 +8,16 @@ class ChildBox extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(childId) {
-      // e.preventDefault();
-      this.props.openModal('editChild', childId);
+    handleClick(e) {
+      e.preventDefault();
+      this.props.openModal('editChild', this.props.child._id);
       debugger
     }
     
     render() {
-      debugger
         const child = this.props.child
         return (
-          <Link onClick={() => this.handleClick(child._id)}>
+          <Link onClick={this.handleClick}>
             <div className="child-link">
               <div className="child-temp-pic"></div>
               <button className="children-index">

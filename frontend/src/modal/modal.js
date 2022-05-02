@@ -40,7 +40,8 @@ function Modal({ modal, childId, closeModal }) {
 
 const mapStateToProps = (state) => {
   return {
-    modal: state.ui.modal[0]
+    modal: state.ui.modal[0],
+    childId: state.ui.modal[1]
   };
 };
 
