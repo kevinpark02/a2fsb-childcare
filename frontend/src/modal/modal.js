@@ -10,7 +10,6 @@ function Modal({ modal, childId, closeModal }) {
     return null;
   }
   let component;
-  debugger
   switch (modal) {
     case "newChild":
       component = (

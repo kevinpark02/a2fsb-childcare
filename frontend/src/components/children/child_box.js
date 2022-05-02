@@ -11,7 +11,6 @@ class ChildBox extends React.Component {
     handleClick(e) {
       e.preventDefault();
       this.props.openModal('editChild', this.props.child._id);
-      debugger
     }
     
     render() {
