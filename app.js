@@ -34,10 +34,10 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // ADD BACKEND ROUTES - START
+app.use('/api/images', images);
 app.use("/api/users", users);
 app.use("/api/children", children);
 app.use("/api/volunteers", volunteers);
-app.use('/api/images', images);
 // ADD BACKEND ROUTES - END
 
 const port = process.env.PORT || 5000;

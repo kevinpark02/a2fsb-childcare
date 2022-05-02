@@ -23,10 +23,10 @@ const ChildSchema = new Schema({
         ref: 'users',
         required: true
     }],
-    photoId: {
-        type: String,
-        required: false
-    },
+    // photoId: {
+    //     type: String,
+    //     required: false
+    // },
     photoUrl: {
         type: String,
         required: false

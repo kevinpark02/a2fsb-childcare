@@ -3,18 +3,25 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const Photo = require('../../models/Photo');
-var AWS = require('aws-sdk')
+var AWS = require('aws-sdk');
+// const { S3 } = require("aws-sdk");
+
 
 var storage = multer.memoryStorage();
-var upload = multer({storage: storage});
 
-AWS.config.update({
-  credentials: {
-    accessKeyId: keys.AWS_ACCESS_KEY_ID,
-    secretAccessKey: keys.AWS_SECRET_ACCESS_KEY,
-    region: keys.AWS_REGION,
-  }
-});
+
+// var upload = multer({storage: storage});
+const upload = multer({ dest: 'uploads/'})
+
+const { uploadFile, getFileStream } = require('../../s3')
+
+// AWS.config.update({
+//   credentials: {
+//     accessKeyId: keys.AWS_ACCESS_KEY_ID,
+//     secretAccessKey: keys.AWS_SECRET_ACCESS_KEY,
+//     region: keys.AWS_REGION,
+//   }
+// });
 
 
 
@@ -41,50 +48,69 @@ router.get("/:id", (req,res, next) => {
   })
 })
 
+router.get("/image/:key", (req, res) => {
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+})
+
 
 // Route to upload file
-router.post("/upload", upload.single("file"), function(req, res) {
-  const file = req.file;
-  const s3FileURL = keys.AWS_Uploaded_File_URL_LINK;
+router.post("/upload", upload.single("file"), async function(req, res) {
+  // console.log(req.file)
+  // console.log(req.body)
+
+  const file = req.file
+  console.log(file)
+  const result = await uploadFile(file)
+  console.log(result)
+
+  res.send(({imagePath: `/images/${result.Key}`}))
+  // unlinkFile(file.path)
+
+
+  // const file = req.file;
+  // const s3FileURL = keys.AWS_Uploaded_File_URL_LINK;
   
-  let s3bucket = new AWS.S3({
-    accessKeyId: keys.AWS_ACCESS_KEY_ID,
-    secretAccessKey: keys.AWS_SECRET_ACCESS_KEY,
-    region: keys.AWS_REGION
-  })
+  // let s3bucket = new AWS.S3({
+  //   accessKeyId: keys.AWS_ACCESS_KEY_ID,
+  //   secretAccessKey: keys.AWS_SECRET_ACCESS_KEY,
+  //   region: keys.AWS_REGION
+  // })
  
-  // where we want to store the file
+  // // where we want to store the file
 
-  var params = {
-    Bucket: keys.AWS_BUCKET_NAME,
-    Key: file.originalname,
-    Body: file.buffer,
-    ContentType: file.mimetype,
-    ACL: "public-read"
-  };
+  // var params = {
+  //   Bucket: keys.AWS_BUCKET_NAME,
+  //   Key: file.originalname,
+  //   Body: file.buffer,
+  //   ContentType: file.mimetype,
+  //   ACL: "public-read"
+  // };
   
 
-  s3bucket.upload(params, function(err, data) {
-    if (err) {
-      res.status(500).json({error: true, Message: err})
-    } else {
-      // res.send({data});
+  // s3bucket.upload(params, function(err, data) {
+  //   if (err) {
+  //     res.status(500).json({error: true, Message: err})
+  //   } else {
+  //     // res.send({data});
       
-      let newFileUploaded = {
-        description: req.body.description,
-        fileLink: s3FileURL + file.originalname,
-        s3_key: params.Key
-      };
-      var photo = new Photo(newFileUploaded);
-      photo.save(function(error, newFile) {
-        if (error) {
-          throw error
-        }
-      })
-      let newData = Object.assign({}, data, {photoId: photo._id})
-      res.send({ newData });
-    }
-  })
+  //     let newFileUploaded = {
+  //       description: req.body.description,
+  //       fileLink: s3FileURL + file.originalname,
+  //       s3_key: params.Key
+  //     };
+  //     var photo = new Photo(newFileUploaded);
+  //     photo.save(function(error, newFile) {
+  //       if (error) {
+  //         throw error
+  //       }
+  //     })
+  //     let newData = Object.assign({}, data, {photoId: photo._id})
+  //     res.send({ newData });
+  //   }
+  // })
 })
 
 // Route to delete a photo file
