@@ -1,6 +1,7 @@
 import React from "react";
 import ChildBox from "./child_box";
 import { Link } from 'react-router-dom';
+import { uploadPhoto } from '../../util/photo_api_util';
 import "./create_child.css";
 
 class CreateChild extends React.Component {
@@ -13,11 +14,15 @@ class CreateChild extends React.Component {
             gender: "",
             birthday: "",
             parents: [],
+            photoId: "",
+            photoUrl: "",
+            photoFile: null,
             errors: {},
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.handlePhotoFile = this.handlePhotoFile.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -27,24 +32,53 @@ class CreateChild extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         {this.renderErrors()}
-        let child = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            gender: this.state.gender,
-            birthday: this.state.birthday,
-            parents: [this.props.currentUser.id]
-        };
 
-        this.props.makeChild(child)
-            .then(() => this.props.fetchChildren());
-        this.setState({
-            firstName: "",
-            lastName: "",
-            gender: "",
-            birthday: "",
-            parents: []
-        });
+        if(this.state.photoFile) {
+            const data = new FormData(e.target);
+            data.append("file", this.state.photoFile);
+            uploadPhoto(data).then(res => {
+              let child = {
+                  firstName: this.state.firstName,
+                  lastName: this.state.lastName,
+                  gender: this.state.gender,
+                  birthday: this.state.birthday,
+                  parents: [this.props.currentUser.id],
+                  photoId: res.data.newData.photoId,
+                  photoUrl: res.data.newData.Location,
+              };
+              this.props.makeChild(child, this.props.history);
+              //     .then(() => this.props.fetchChildren());
+              //     this.setState({
+              //         firstName: "",
+              //         lastName: "",
+              //         gender: "",
+              //         birthday: "",
+              //         photoId: "",
+              //         photoUrl: "",
+              //         photoFile: null,
+              //         parents: []
+              //     });
+            });
+        } else {
+            let child = {
+                  firstName: this.state.firstName,
+                  lastName: this.state.lastName,
+                  gender: this.state.gender,
+                  birthday: this.state.birthday,
+                  parents: [this.props.currentUser.id],
+                  photoId: this.state.photoId,
+                  photoUrl: this.state.photoUrl,
+              };
+              this.props.makeChild(child, this.props.history);
+        }
     }
+
+    handlePhotoFile(e) {
+        e.preventDefault();
+        this.setState({
+          photoFile: e.target.files[0]
+        })
+  }
 
     renderErrors() {
       return(
@@ -138,6 +172,20 @@ class CreateChild extends React.Component {
                   />
                 </div>
                 <br />
+                <div className="new-child-group">
+                  <label className="new-child-label">Upload Profile Picture</label>
+                  {/* <label className="child-error">
+                    {this.state.errors["birthday"]}
+                  </label> */}
+                  <br />
+                  <input
+                    className="new-child-input"
+                    type="file"
+                    name=""
+                    id=""
+                    onChange={this.handlePhotoFile}
+                  />
+                </div>
                 <input className="submit-button" type="submit" value="submit" />
                 <input
                   className="submit-button"
