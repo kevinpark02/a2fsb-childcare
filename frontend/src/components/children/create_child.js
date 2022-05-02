@@ -1,5 +1,6 @@
 import React from "react";
 import ChildBox from "./child_box";
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { uploadPhoto } from '../../util/photo_api_util';
 import "./create_child.css";
@@ -29,14 +30,22 @@ class CreateChild extends React.Component {
       this.setState({ errors: nextProps.errors });
     }
 
+    componentDidMount(){
+      // console.log(this.state)
+    }
+
     handleSubmit(e) {
         e.preventDefault();
+        console.log(this.state)
         {this.renderErrors()}
 
         if(this.state.photoFile) {
             const data = new FormData(e.target);
+            console.log(data)
             data.append("file", this.state.photoFile);
+            console.log(data)
             uploadPhoto(data).then(res => {
+              console.log(res)
               let child = {
                   firstName: this.state.firstName,
                   lastName: this.state.lastName,
@@ -46,7 +55,7 @@ class CreateChild extends React.Component {
                   photoId: res.data.newData.photoId,
                   photoUrl: res.data.newData.Location,
               };
-              this.props.makeChild(child, this.props.history);
+              this.props.makeChild(child);
               //     .then(() => this.props.fetchChildren());
               //     this.setState({
               //         firstName: "",
@@ -75,9 +84,11 @@ class CreateChild extends React.Component {
 
     handlePhotoFile(e) {
         e.preventDefault();
+        // console.log(this.state)
         this.setState({
           photoFile: e.target.files[0]
         })
+        console.log(this.state)
   }
 
     renderErrors() {
@@ -187,11 +198,12 @@ class CreateChild extends React.Component {
                   />
                 </div>
                 <input className="submit-button" type="submit" value="submit" />
+                <div className="errors">{this.renderErrors()}</div>
                 <input
                   className="submit-button"
                   type="submit"
                   value="cancel"
-                  onClick={() => this.props.closeModal()}
+                  // onClick={() => this.props.closeModal()}
                 />
               </div>
             </form>
@@ -200,4 +212,4 @@ class CreateChild extends React.Component {
     }
 }
 
-export default CreateChild;
+export default withRouter(CreateChild);
