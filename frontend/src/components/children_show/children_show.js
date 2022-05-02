@@ -13,8 +13,8 @@ class ChildrenShow extends React.Component {
             firstName: child.firstName,
             lastName: child.lastName,
             gender: child.gender,
-            _id: child._id,
-            parents: []
+            birthday: child.birthday,
+            parents: child.parents,
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
