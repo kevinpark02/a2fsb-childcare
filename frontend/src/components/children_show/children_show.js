@@ -48,19 +48,25 @@ class ChildrenShow extends React.Component {
   }
 
   renderExistingParentsOptions() {
+      debugger
       let existingOptions = [];
       const parents = this.state.parents;
       const volunteers = this.props.volunteers;
 
-      parents.forEach(parent => {
-        existingOptions.push(volunteers[parent])
-      })
+      if (Object.values(volunteers).length === 0) {
+          return existingOptions;
+      } else {
+          parents.forEach(parent => {
+            existingOptions.push(volunteers[parent])
+          })
+    
+          existingOptions.forEach(parent => {
+              parent.fullName = parent.firstName + " " + parent.lastName
+          });
+    
+          return existingOptions;
+      }
 
-      existingOptions.forEach(parent => {
-          parent.fullName = parent.firstName + " " + parent.lastName
-      });
-
-      return existingOptions;
   }
 
   handleDelete(id) {
