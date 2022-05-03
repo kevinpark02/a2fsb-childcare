@@ -70,7 +70,8 @@ class ChildrenShow extends React.Component {
   }
 
   handleDelete(id) {
-    this.props.removeChild(id).then(() => this.props.history.push(`/children`))
+    this.props.removeChild(id)
+        .then(() => this.props.closeModal())
   }
 
   handleSelect(parents) {
