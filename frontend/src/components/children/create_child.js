@@ -179,6 +179,7 @@ class CreateChild extends React.Component {
                     placeholder="Birthday"
                   />
                 </div>
+                <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Parents</label>
                   <label className="child-error">
