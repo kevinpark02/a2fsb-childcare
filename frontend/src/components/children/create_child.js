@@ -18,13 +18,13 @@ class CreateChild extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.renderParentsOptions = this.renderParentsOptions.bind(this);
-        this.handleActions = this.handleSelect.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
     }
 
     componentDidMount() {
       this.props.fetchVolunteers()
-        .then(() => this.props.removeChildErrors())
+        .then(() => this.props.removeChildErrors());
     }
 
     componentWillReceiveProps(nextProps) {
@@ -179,6 +179,7 @@ class CreateChild extends React.Component {
                     placeholder="Birthday"
                   />
                 </div>
+                <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Parents</label>
                   <label className="child-error">

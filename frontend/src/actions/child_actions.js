@@ -69,5 +69,5 @@ export const removeChild = childId => dispatch => (
 export const editChild = child => dispatch => (
     changeChild(child)
         .then(() => dispatch(alterChild(child)))
-        .catch(err => console.log(err))
+        .catch(err => dispatch(receiveErrors(err.response.data)))
 );
