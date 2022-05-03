@@ -24,7 +24,7 @@ class CreateChild extends React.Component {
 
     componentDidMount() {
       this.props.fetchVolunteers()
-        .then(() => this.props.removeChildErrors())
+        .then(() => this.props.removeChildErrors());
     }
 
     componentWillReceiveProps(nextProps) {

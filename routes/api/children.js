@@ -64,11 +64,24 @@ const { deleteOne } = require("../../models/Child");
             }
         )
         
-        router.patch("/edit/:id", (req, res) => {
-            Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
-                .then(child => res.json(child))
+        router.patch("/edit/:id",
+            passport.authenticate("jwt", { session: false }), 
+            (req, res) => {
+                const { isValid, errors } = validateChildInput(req.body);
+
+                if(!isValid) {
+                    return res.status(400).json(errors);
+                }
+
+                Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
+                    .then(child => res.json(child))
             }
         )
+        // router.patch("/edit/:id", (req, res) => {
+        //     Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
+        //         .then(child => res.json(child))
+        //     }
+        // )
         
 //! ADD ROUTES - END
 

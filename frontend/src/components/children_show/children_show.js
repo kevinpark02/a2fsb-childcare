@@ -10,7 +10,7 @@ class ChildrenShow extends React.Component {
     super(props);
     const children = this.props.children;
     const child = children.find((child) => child._id === this.props.childId);
-    debugger
+    debugger;
     this.state = {
       firstName: child.firstName,
       lastName: child.lastName,
@@ -23,16 +23,34 @@ class ChildrenShow extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.renderParentsOptions = this.renderParentsOptions.bind(this);
-    this.renderExistingParentsOptions = this.renderExistingParentsOptions.bind(this);
+    this.renderExistingParentsOptions =
+      this.renderExistingParentsOptions.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchVolunteers();
+    this.props.fetchVolunteers().then(() => this.props.removeChildErrors());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ errors: nextProps.errors });
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    this.renderErrors();
+
     this.props.editChild(this.state).then(() => this.props.fetchChildren());
+
+    if (
+        this.state.firstName !== "" &&
+        this.state.lastName !== "" &&
+        this.state.gender !== "" &&
+        this.state.birthday !== "" &&
+        this.state.parents.length > 0
+    ) {
+        this.props.fetchChildren().then(() => this.props.closeModal());
+    }
   }
 
   update(field) {
@@ -42,36 +60,44 @@ class ChildrenShow extends React.Component {
   renderParentsOptions() {
     let options = Object.values(this.props.volunteers);
     options.forEach((volunteer) => {
-      volunteer.fullName = volunteer.firstName + " " + volunteer.lastName
+      volunteer.fullName = volunteer.firstName + " " + volunteer.lastName;
     });
     return options;
   }
 
   renderExistingParentsOptions() {
-      debugger
-      let existingOptions = [];
-      const parents = this.state.parents;
-      const volunteers = this.props.volunteers;
+    debugger;
+    let existingOptions = [];
+    const parents = this.state.parents;
+    const volunteers = this.props.volunteers;
 
-      if (Object.values(volunteers).length === 0) {
-          return existingOptions;
-      } else {
-          parents.forEach(parent => {
-            existingOptions.push(volunteers[parent])
-          })
-    
-          existingOptions.forEach(parent => {
-              parent.fullName = parent.firstName + " " + parent.lastName
-          });
-    
-          return existingOptions;
-      }
+    if (Object.values(volunteers).length === 0) {
+      return existingOptions;
+    } else {
+      parents.forEach((parent) => {
+        existingOptions.push(volunteers[parent]);
+      });
 
+      existingOptions.forEach((parent) => {
+        parent.fullName = parent.firstName + " " + parent.lastName;
+      });
+
+      return existingOptions;
+    }
+  }
+
+  renderErrors() {
+    return (
+      <ul>
+        {Object.keys(this.state.errors).map((error, i) => (
+          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        ))}
+      </ul>
+    );
   }
 
   handleDelete(id) {
-    this.props.removeChild(id)
-        .then(() => this.props.closeModal())
+    this.props.removeChild(id).then(() => this.props.closeModal());
   }
 
   handleSelect(parents) {
