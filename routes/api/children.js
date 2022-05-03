@@ -8,7 +8,6 @@
         const validateChildInput = require("../../validation/children");
     // Child model
         const Child = require("../../models/Child");
-const { deleteOne } = require("../../models/Child");
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
