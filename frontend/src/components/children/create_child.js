@@ -18,7 +18,7 @@ class CreateChild extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.renderParentsOptions = this.renderParentsOptions.bind(this);
-        this.handleActions = this.handleSelect.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
     }
 
