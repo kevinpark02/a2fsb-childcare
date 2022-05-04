@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class ChildBox extends React.Component {
     constructor(props){
         super(props)
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+      e.preventDefault();
+      this.props.openModal('editChild', this.props.child._id);
     }
     
     render() {
@@ -13,7 +20,7 @@ class ChildBox extends React.Component {
             return null
         }
         return (
-          <Link to={`/children/${child._id}`}>
+          <Link onClick={this.handleClick}>
             <div className="child-link">
               {/* <div className="child-temp-pic"></div> */}
               <img className="child-profile-pic" src={`api/images/${child.photoUrl}`}></img>
@@ -27,4 +34,4 @@ class ChildBox extends React.Component {
     }
 }
 
-export default ChildBox;
+export default withRouter(ChildBox);

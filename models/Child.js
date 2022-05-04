@@ -20,7 +20,7 @@ const ChildSchema = new Schema({
     },
     parents: [{
         type: Schema.Types.ObjectId,
-        ref: 'users',
+        ref: 'volunteers',
         required: true
     }],
     // photos: [{

@@ -11,8 +11,9 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
     fetchChildren: () => dispatch(fetchChildren()),
-    openModal: modal => dispatch(openModal(modal)),
-    fetchPhotos: () => dispatch(fetchPhotos())
+    fetchPhotos: () => dispatch(fetchPhotos()),
+    openModal: (modal, childId) => dispatch(openModal(modal, childId)),
+
   });
 
 export default connect(mSTP, mDTP)(Children);

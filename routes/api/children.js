@@ -8,7 +8,7 @@
         const validateChildInput = require("../../validation/children");
     // Child model
         const Child = require("../../models/Child");
-const { deleteOne } = require("../../models/Child");
+        const { deleteOne } = require("../../models/Child");
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
@@ -21,7 +21,7 @@ const { deleteOne } = require("../../models/Child");
         router.get("/", (req, res) => {
             Child
                 .find()
-                .sort({ date: -1 })
+                .sort({ birthday: 1 })
                 .then(children => res.json(children))
                 .catch(err => res.status(400).json(err))
         })
@@ -47,7 +47,7 @@ const { deleteOne } = require("../../models/Child");
                     lastName: req.body.lastName,
                     gender: req.body.gender,
                     birthday: req.body.birthday,
-                    parents: req.user.id,
+                    parents: req.body.parents,
                     photoId: req.body.photoId,
                     photoUrl: req.body.photoUrl
                 });
@@ -66,11 +66,24 @@ const { deleteOne } = require("../../models/Child");
             }
         )
         
-        router.patch("/edit/:id", (req, res) => {
-            Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
-                .then(child => res.json(child))
+        router.patch("/edit/:id",
+            passport.authenticate("jwt", { session: false }), 
+            (req, res) => {
+                const { isValid, errors } = validateChildInput(req.body);
+
+                if(!isValid) {
+                    return res.status(400).json(errors);
+                }
+
+                Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
+                    .then(child => res.json(child))
             }
         )
+        // router.patch("/edit/:id", (req, res) => {
+        //     Child.findByIdAndUpdate(req.params.id, req.body, {new : true})
+        //         .then(child => res.json(child))
+        //     }
+        // )
         
 //! ADD ROUTES - END
 

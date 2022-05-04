@@ -24,6 +24,10 @@ module.exports = function validateChildInput(data) {
         errors.birthday = 'Birthday is required'
     }
 
+    if(data.parents.length === 0) {
+        errors.parents = "One or two parent(s) are required"
+    } 
+
     return{
         errors,
         isValid: Object.keys(errors).length === 0
