@@ -12,14 +12,18 @@ router.get("/",
             .catch(err => res.status(404).json({ eventsNotFound: "No events found" }))
     })
 
-router.post("/",
+router.post("/new",
     passport.authenticate("jwt", { session: false }),
     (req, res) => {
         
         const newEvent = new Event({
+            title: req.body.title,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
-            eventName: req.body.eventName
+            volunteers: req.body.volunteers,
+            children: req.body.children,
+            chef: req.body.children,
+            description: req.body.description
         });
         
         newEvent
