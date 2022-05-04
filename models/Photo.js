@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let PhotoSchema = new Schema({
-  photoUrl: String,
+  photoUrl: {type: String},
 },{
   timestamps: true
 })

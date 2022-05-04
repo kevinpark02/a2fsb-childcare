@@ -19,6 +19,7 @@ class Children extends React.Component {
 
     componentDidMount() {
         this.props.fetchChildren();
+        this.props.fetchPhotos();
     }
 
     handleClick(e) {

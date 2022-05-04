@@ -16,6 +16,7 @@ class CreateChild extends React.Component {
             birthday: "",
             parents: [],
             photoId: "",
+            // photos: [],
             photoUrl: "",
             photoFile: null,
             errors: {},
@@ -32,6 +33,7 @@ class CreateChild extends React.Component {
 
     componentDidMount(){
       // console.log(this.state)
+      // this.props.fetchPhotos()
     }
 
     handleSubmit(e) {
@@ -52,10 +54,10 @@ class CreateChild extends React.Component {
                   gender: this.state.gender,
                   birthday: this.state.birthday,
                   parents: [this.props.currentUser.id],
-                  photoId: res.data.newData.photoId,
-                  photoUrl: res.data.newData.Location,
+                  photoId: res.data.photoId,
+                  photoUrl: res.data.imagePath,
               };
-              this.props.makeChild(child);
+              this.props.makeChild(child, this.props.history);
               //     .then(() => this.props.fetchChildren());
               //     this.setState({
               //         firstName: "",
