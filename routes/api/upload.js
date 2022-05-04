@@ -41,7 +41,6 @@ router.get("/:id", (req,res, next) => {
 })
 
 router.get("/images/:key", (req, res) => {
-  debugger
   console.log(req.params.key)
   const key = req.params.key
   const readStream = getFileStream(key)
