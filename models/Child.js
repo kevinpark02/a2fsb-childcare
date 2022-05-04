@@ -23,8 +23,17 @@ const ChildSchema = new Schema({
         ref: 'volunteers',
         required: true
     }],
-    profilePicture: {
+    // photos: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Photo'
+    // }],
+    photoId: {
         type: String,
+        required: false
+    },
+    photoUrl: {
+        type: String,
+        required: false
     },
     date: {
         type: Date,

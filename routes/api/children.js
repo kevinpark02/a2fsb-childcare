@@ -8,7 +8,7 @@
         const validateChildInput = require("../../validation/children");
     // Child model
         const Child = require("../../models/Child");
-const { deleteOne } = require("../../models/Child");
+        const { deleteOne } = require("../../models/Child");
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
@@ -47,7 +47,9 @@ const { deleteOne } = require("../../models/Child");
                     lastName: req.body.lastName,
                     gender: req.body.gender,
                     birthday: req.body.birthday,
-                    parents: req.body.parents
+                    parents: req.body.parents,
+                    photoId: req.body.photoId,
+                    photoUrl: req.body.photoUrl
                 });
 
                 newChild
