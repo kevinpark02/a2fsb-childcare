@@ -41,7 +41,6 @@ router.get("/:id", (req,res, next) => {
 })
 
 router.get("/images/:key", (req, res) => {
-  console.log(req.params.key)
   const key = req.params.key
   const readStream = getFileStream(key)
 
@@ -52,9 +51,7 @@ router.get("/images/:key", (req, res) => {
 // Route to upload file
 router.post("/upload", upload.single("file"), async function(req, res) {
   const file = req.file
-  console.log(file)
   const result = await uploadFile(file)
-  console.log(result)
   await unlinkFile(file.path)
 
   let newFileUploaded = {
