@@ -270,12 +270,11 @@ class CreateChild extends React.Component {
                   />
                 </div>
                 <input className="submit-button" type="submit" value="submit" />
-                <div className="errors">{this.renderErrors()}</div>
                 <input
                   className="submit-button"
                   type="submit"
                   value="cancel"
-                  // onClick={() => this.props.closeModal()}
+                  onClick={() => this.props.closeModal()}
                 />
               </div>
             </form>
