@@ -23,10 +23,6 @@ const ChildSchema = new Schema({
         ref: 'volunteers',
         required: true
     }],
-    // photos: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Photo'
-    // }],
     photoId: {
         type: String,
         required: false

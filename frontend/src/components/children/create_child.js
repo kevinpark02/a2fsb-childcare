@@ -48,7 +48,6 @@ class CreateChild extends React.Component {
 
         if(this.state.photoFile) {
             const data = new FormData(e.target);
-            console.log(data)
             data.append("file", this.state.photoFile);
             uploadPhoto(data).then(res => {
               let child = {
@@ -69,7 +68,7 @@ class CreateChild extends React.Component {
                   lastName: this.state.lastName,
                   gender: this.state.gender,
                   birthday: this.state.birthday,
-                  parents: [this.props.currentUser.id],
+                  parents: this.state.parents,
                   photoId: this.state.photoId,
                   photoUrl: this.state.photoUrl,
               };
@@ -257,9 +256,6 @@ class CreateChild extends React.Component {
                 <br />
                 <div className="new-child-group">
                   <label className="new-child-label">Upload Profile Picture</label>
-                  {/* <label className="child-error">
-                    {this.state.errors["birthday"]}
-                  </label> */}
                   <br />
                   <input
                     className="new-child-input"
