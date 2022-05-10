@@ -88,11 +88,9 @@ class CreateChild extends React.Component {
 
     handlePhotoFile(e) {
         e.preventDefault();
-        // console.log(this.state)
         this.setState({
           photoFile: e.target.files[0]
         })
-        console.log(this.state)
   }
 
     renderErrors() {

@@ -16,7 +16,6 @@ class ChildBox extends React.Component {
     
     render() {
         const child = this.props.child
-        console.log(child)
         if(!child){
             return null
         }

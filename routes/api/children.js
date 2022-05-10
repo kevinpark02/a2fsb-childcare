@@ -37,8 +37,6 @@
             passport.authenticate("jwt", { session: false }),
             (req, res) => {
                 const { isValid, errors } = validateChildInput(req.body);
-                console.log('im logging it')
-                console.log(errors)
                 if(!isValid) {
                     return res.status(400).json(errors);
                 }
