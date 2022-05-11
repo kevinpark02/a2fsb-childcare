@@ -4,6 +4,7 @@ import error from "./errors_reducer";
 import children from "./children_reducer";
 import volunteers from "./volunteers_reducer";
 import ui from "./ui_reducer";
+import photoReducer from "./photo_reducer"
 
 const RootReducer = combineReducers({
   session,
@@ -11,6 +12,7 @@ const RootReducer = combineReducers({
   children,
   volunteers,
   ui,
+  photos: photoReducer
 });
 
 export default RootReducer;

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
+import { fetchPhotos } from '../../actions/photo_actions';
 import { fetchChildren, makeChild, removeChild, removeChildErrors } from '../../actions/child_actions';
 import { fetchVolunteers } from '../../actions/volunteer_actions';
+
 import CreateChild from './create_child';
 
 const mapStateToProps = (state) => {

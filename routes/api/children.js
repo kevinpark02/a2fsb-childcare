@@ -8,6 +8,7 @@
         const validateChildInput = require("../../validation/children");
     // Child model
         const Child = require("../../models/Child");
+
 //! DECLARING CONSTANTS - END
 
 //! ADD ROUTES - START
@@ -36,7 +37,6 @@
             passport.authenticate("jwt", { session: false }),
             (req, res) => {
                 const { isValid, errors } = validateChildInput(req.body);
-
                 if(!isValid) {
                     return res.status(400).json(errors);
                 }
@@ -46,7 +46,9 @@
                     lastName: req.body.lastName,
                     gender: req.body.gender,
                     birthday: req.body.birthday,
-                    parents: req.body.parents
+                    parents: req.body.parents,
+                    photoId: req.body.photoId,
+                    photoUrl: req.body.photoUrl
                 });
 
                 newChild

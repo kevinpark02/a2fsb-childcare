@@ -14,6 +14,7 @@ const users = require("./routes/api/users");
 const children = require("./routes/api/children");
 const volunteers = require("./routes/api/volunteers");
 const events = require("./routes/api/events");
+const images = require("./routes/api/upload");
 // ADD REQUIRED ROUTES - END
 
 if (process.env.NODE_ENV === "production") {
@@ -34,6 +35,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 // ADD BACKEND ROUTES - START
+app.use('/api/images', images);
 app.use("/api/users", users);
 app.use("/api/children", children);
 app.use("/api/volunteers", volunteers);
