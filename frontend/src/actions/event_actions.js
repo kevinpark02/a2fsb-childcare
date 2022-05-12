@@ -2,8 +2,8 @@ import { getEvents, getEvent, createEvent, changeEvent, deleteEvent } from "../u
 
 export const RECEIVE_EVENTS = "RECEIVE_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
-export const RECEIVE_NEW_EVENT = "RECEIVE_NEW_EVENT";
-export const EDIT_EVENT = "EDIT_EVENT";
+// export const RECEIVE_NEW_EVENT = "RECEIVE_NEW_EVENT";
+// export const EDIT_EVENT = "EDIT_EVENT";
 export const CLEAR_EVENT = "CLEAR_EVENT";
 export const RECEIVE_EVENT_ERRORS = "RECEIVE_EVENT_ERRORS";
 export const REMOVE_EVENT_ERORRS = "REMOVE_EVENT_ERORRS";
@@ -18,15 +18,15 @@ export const receiveEvent = (event) => ({
     event
 });
 
-export const receiveNewEvent = event => ({
-    type: RECEIVE_NEW_EVENT,
-    event
-});
+// export const receiveNewEvent = event => ({
+//     type: RECEIVE_NEW_EVENT,
+//     event
+// });
 
-export const alterEvent = event => ({
-    type: EDIT_EVENT,
-    event
-});
+// export const alterEvent = event => ({
+//     type: EDIT_EVENT,
+//     event
+// });
 
 export const clearEvent = eventId => ({
     type: CLEAR_EVENT,
@@ -56,7 +56,7 @@ export const fetchEvent =(eventId) => dispatch => (
 
 export const makeEvent = (data) => dispatch => (
     createEvent(data)
-        .then(event => dispatch(receiveNewEvent(event)))
+        .then(event => dispatch(receiveEvent(event)))
         .catch(err => dispatch(receiveErrors(err.response.data)))
 );
 
@@ -68,6 +68,6 @@ export const removeEvent = (eventId) => dispatch => (
 
 export const editEvent = event => dispatch => (
     changeEvent(event)
-        .then(() => dispatch(alterEvent(event)))
+        .then(() => dispatch(receiveEvent(event)))
         .catch(err => dispatch(receiveErrors(err.response.data)))
 );
