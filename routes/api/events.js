@@ -59,7 +59,7 @@ router.delete("/:id",
 
 router.patch("/edit/:id",
     passport.authenticate("jwt", { session: false }),
-    (req, req) => {
+    (req, res) => {
         const { isValid, errors } = validateEventInput(req.body);
 
         if(!isValid) {
