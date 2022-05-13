@@ -26,12 +26,6 @@
                 .catch(err => res.status(400).json(err))
         })
 
-    //! Get children by parents - need to finish this up later
-        // router.get("/user/:user_id", (req, res) => {
-        //     Child
-        //         .find({ parent })
-        // })
-
     // Post route
         router.post("/",
             passport.authenticate("jwt", { session: false }),
@@ -58,10 +52,12 @@
             }
         )
 
-        router.delete("/:id", (req, res) => {
-            Child.findByIdAndDelete(req.params.id)
-                .then((child) => res.json("Child successfully deleted"))
-                .catch(err => res.status(400).json("Child was not successfully deleted"))
+        router.delete("/:id",
+            passport.authenticate("jwt", { session: false }),
+            (req, res) => {
+                Child.findByIdAndDelete(req.params.id)
+                    .then((child) => res.json("Child successfully deleted"))
+                    .catch(err => res.status(400).json("Child was not successfully deleted"))
             }
         )
         
