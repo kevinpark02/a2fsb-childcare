@@ -11,6 +11,7 @@ import ProfileContainer from "./profile/profile_container";
 import NewChildContainer from "./children/new_child_container";
 import ChildrenShowContainer from "./children_show/children_show_container";
 import CalendarContainer from "./calendar/calendar_container";
+import NewEventContainer from "./calendar/new_event_container";
 import Modal from "../modal/modal";
 
 import "./app.css"
@@ -27,9 +28,12 @@ const App = () => (
       <ProtectedRoute exact path="/children" component={ChildrenContainer} />
       <ProtectedRoute exact path="/children" component={NewChildContainer} />
       <ProtectedRoute exact path="/children" component={ChildrenShowContainer} />
-      <ProtectedRoute exact path="/children" component={Modal} />
+      {/* <ProtectedRoute exact path="/children" component={Modal} /> */}
 
       <ProtectedRoute exact path="/calendar" component={CalendarContainer} />
+      <ProtectedRoute exact path="/calendar" component={NewEventContainer} />
+      {/* <ProtectedRoute exact path="/calendar" component={Modal} /> */}
+
       
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import "../children/children.css"
 
 class CreateEvent extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class CreateEvent extends React.Component {
 
     render() {
         return (
-            <div>This will be the event form</div>
+            <div className="new-child-form-container">This will be the event form</div>
         )
     }
 }

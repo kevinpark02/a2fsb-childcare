@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { fetchEvents, makeEvent, removeEventErrors } from "../../actions/event_actions";
 import { fetchChildren } from "../../actions/child_actions";
 import { fetchVolunteers } from '../../actions/volunteer_actions';
+import CreateEvent from "./create_event";
 
 const mapStateToProps = (state) => {
     return {

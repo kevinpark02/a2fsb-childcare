@@ -17,6 +17,7 @@ class Calendar extends React.Component {
 
     handleDateClick(e) {
         console.log(e);
+        this.props.openModal('event');
     }
 
     render() {
