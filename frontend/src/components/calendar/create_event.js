@@ -1,28 +1,77 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Modal from "react-modal";
+import Datetime from "react-datetime";
 import "../children/children.css"
 
 class CreateEvent extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            eventName: "",
-            setupTime: "",
-            startTime: "",
-            endTime: "",
-            children: [],
-            volunteers: [],
-            chef: [],
-            errors: {}
-        }
-    }
+    this.state = {
+      eventName: "",
+      setupTime: "",
+      startTime: "",
+      endTime: "",
+      children: [],
+      volunteers: [],
+      chef: [],
+      errors: {},
+    };
+  }
 
-    render() {
-        return (
-            <div className="new-child-form-container">This will be the event form</div>
-        )
-    }
+  update(field) {
+    return (e) => this.setState({ [field]: e.target.value });
+  }
+
+  render() {
+    return (
+      <div className="new-child-form-container">
+        <form onSubmit={this.handleSubmit} className="new-child-form">
+          <div className="new-child-form-inputs">
+            <br />
+            <div className="new-child-group">
+              <label className="new-child-label">Event Name</label>
+              <label className="child-error">
+                {this.state.errors["eventName"]}
+              </label>
+              <br />
+              <input
+                className="new-child-input"
+                value={this.state.eventName}
+                onChange={this.update("eventName")}
+                placeholder="Please Select Gender"
+              />
+            </div>
+            <br />
+            <div className="new-child-group">
+              <label className="new-child-label">Setup Time</label>
+              <label className="child-error">
+                {this.state.errors["setupTime"]}
+              </label>
+              <br />
+              <Datetime
+                value={this.state.setupTime}
+                onChange={this.update("setupTime")}
+              />
+            </div>
+            <br />
+            <div className="new-child-group">
+              <label className="new-child-label">Start Time</label>
+              <label className="child-error">
+                {this.state.errors["startTime"]}
+              </label>
+              <br />
+              <Datetime
+                value={this.state.startTime}
+                onChange={this.update("startTime")}
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default withRouter(CreateEvent);

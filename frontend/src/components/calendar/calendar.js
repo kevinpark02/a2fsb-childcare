@@ -16,13 +16,12 @@ class Calendar extends React.Component {
     }
 
     handleDateClick(e) {
-        console.log(e);
         this.props.openModal('event');
     }
 
     render() {
         return (
-          <div className="all-children-wrapper">
+          <div className="all-children-wrapper" style={{zIndex: 0}}>
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, listPlugin]}
               initialView="dayGridMonth"
@@ -32,14 +31,6 @@ class Calendar extends React.Component {
                 center: "title",
                 right: "dayGridMonth,dayGridWeek,dayGridDay,listWeek",
               }}
-              events={[
-                {
-                  title: "mbs",
-                  start: "2022-05-08T25:00:00.000Z",
-                  duration: "02:00"
-                
-                },
-              ]}
               dateClick={this.handleDateClick}
             />
           </div>
