@@ -7,7 +7,6 @@ import NewEventContainer from "../components/calendar/new_event_container";
 import './modal.css';
 
 function Modal({ modal, childId, closeModal }) {
-  debugger
   if (!modal) {
     return null;
   }

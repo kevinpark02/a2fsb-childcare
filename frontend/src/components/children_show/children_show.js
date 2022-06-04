@@ -10,7 +10,6 @@ class ChildrenShow extends React.Component {
     super(props);
     const children = this.props.children;
     const child = children.find((child) => child._id === this.props.childId);
-    debugger;
     this.state = {
       firstName: child.firstName,
       lastName: child.lastName,
@@ -66,7 +65,6 @@ class ChildrenShow extends React.Component {
   }
 
   renderExistingParentsOptions() {
-    debugger;
     let existingOptions = [];
     const parents = this.state.parents;
     const volunteers = this.props.volunteers;

@@ -2,6 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Modal from "react-modal";
 import Datetime from "react-datetime";
+// import "path/to/node_modules/react-datetime/css/react-datetime.css";
+import "../../../node_modules/react-datetime/css/react-datetime.css";
 import "../children/children.css"
 
 class CreateEvent extends React.Component {
@@ -18,13 +20,28 @@ class CreateEvent extends React.Component {
       chef: [],
       errors: {},
     };
+
+    this.update = this.update.bind(this);
+    this.calUpdate = this.calUpdate.bind(this);
+
   }
 
   update(field) {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
+  calUpdate(date, type) {
+      if (type === "setupTime") {
+          this.setState({ ["setupTime"]: new Date(date._d)})
+        } else if (type === "startTime") {
+          this.setState({ ["startTime"]: new Date(date._d)})
+        } else if (type === "endTime") {
+          this.setState({ ["endTime"]: new Date(date._d)})
+      }
+  }
+
   render() {
+      console.log(this.state)
     return (
       <div className="new-child-form-container">
         <form onSubmit={this.handleSubmit} className="new-child-form">
@@ -52,7 +69,7 @@ class CreateEvent extends React.Component {
               <br />
               <Datetime
                 value={this.state.setupTime}
-                onChange={this.update("setupTime")}
+                onChange={(date) => this.calUpdate(date, "setupTime")}
               />
             </div>
             <br />
@@ -64,7 +81,18 @@ class CreateEvent extends React.Component {
               <br />
               <Datetime
                 value={this.state.startTime}
-                onChange={this.update("startTime")}
+                onChange={(date) => this.calUpdate(date, "startTime")}
+              />
+            </div>
+            <div className="new-child-group">
+              <label className="new-child-label">End Time</label>
+              <label className="child-error">
+                {this.state.errors["endTime"]}
+              </label>
+              <br />
+              <Datetime
+                value={this.state.endTime}
+                onChange={(date) => this.calUpdate(date, "endTime")}
               />
             </div>
           </div>

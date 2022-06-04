@@ -9,7 +9,6 @@ import ChildrenShow from './children_show';
 
 
 const mSTP = (state, ownProps) => {
-    debugger
     return {
         childId: ownProps.childId,
         children: Object.values(state.children.all),
