@@ -23,7 +23,7 @@ router.get('/:id',
     }
 );
 
-router.post("/new",
+router.post("/",
     passport.authenticate("jwt", { session: false }),
     (req, res) => {
         const { isValid, errors } = validateEventInput(req.body);
@@ -33,13 +33,13 @@ router.post("/new",
         }
 
         const newEvent = new Event({
-            title: req.body.title,
-            startDate: req.body.startDate,
-            endDate: req.body.endDate,
-            volunteers: req.body.volunteers,
-            children: req.body.children,
-            chef: req.body.children,
-            description: req.body.description
+            eventName: req.body.eventName,
+            startTime: req.body.startTime,
+            endTime: req.body.endTime,
+            // volunteers: req.body.volunteers,
+            // children: req.body.children,
+            // chef: req.body.children,
+            // description: req.body.description
         });
         
         newEvent

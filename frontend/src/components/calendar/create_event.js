@@ -10,19 +10,27 @@ class CreateEvent extends React.Component {
   constructor(props) {
     super(props);
 
+    // this.state = {
+    //   eventName: "",
+    //   setupTime: "",
+    //   startTime: "",
+    //   endTime: "",
+    //   children: [],
+    //   volunteers: [],
+    //   chef: [],
+    //   errors: {},
+    // };
+
     this.state = {
-      eventName: "",
-      setupTime: "",
-      startTime: "",
-      endTime: "",
-      children: [],
-      volunteers: [],
-      chef: [],
-      errors: {},
+        eventName: "",
+        startTime: "",
+        endTime: "",
+        errors: {}
     };
 
     this.update = this.update.bind(this);
     this.calUpdate = this.calUpdate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
@@ -38,6 +46,19 @@ class CreateEvent extends React.Component {
         } else if (type === "endTime") {
           this.setState({ ["endTime"]: new Date(date._d)})
       }
+  }
+
+  handleSubmit(e) {
+      e.preventDefault();
+
+      let event = {
+          eventName: this.state.eventName,
+          startTime: this.state.startTime,
+          endTime: this.state.endTime
+      }
+
+      this.props.makeEvent(event)
+
   }
 
   render() {
@@ -60,7 +81,7 @@ class CreateEvent extends React.Component {
                 placeholder="Please Select Gender"
               />
             </div>
-            <br />
+            {/* <br />
             <div className="new-child-group">
               <label className="new-child-label">Setup Time</label>
               <label className="child-error">
@@ -71,7 +92,7 @@ class CreateEvent extends React.Component {
                 value={this.state.setupTime}
                 onChange={(date) => this.calUpdate(date, "setupTime")}
               />
-            </div>
+            </div> */}
             <br />
             <div className="new-child-group">
               <label className="new-child-label">Start Time</label>
@@ -95,6 +116,7 @@ class CreateEvent extends React.Component {
                 onChange={(date) => this.calUpdate(date, "endTime")}
               />
             </div>
+            <input className="submit-button" type="submit" value="submit" />
           </div>
         </form>
       </div>

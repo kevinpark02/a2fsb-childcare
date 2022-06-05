@@ -10,29 +10,29 @@ module.exports = function validateEventInput(data) {
         errors.eventName = 'Event name is required'
     };
 
-    if(Validator.isEmpty(data.setupTime)) {
-        errors.setupTime = 'Baby sitting set up time is required'
-    };
+    // if(Validator.isEmpty(data.setupTime)) {
+    //     errors.setupTime = 'Baby sitting set up time is required'
+    // };
 
     if(Validator.isEmpty(data.startTime)) {
         errors.startTime = 'Baby sitting start time is required'
     };
 
-    if(Validator.isEmpty(data.endtime)) {
+    if(Validator.isEmpty(data.endTime)) {
         errors.endtime = 'Baby sitting end time is required'
     };
 
-    if(data.children.length === 0) {
-        errors.children = 'One of more children are required'
-    };
+    // if(data.children.length === 0) {
+    //     errors.children = 'One of more children are required'
+    // };
 
-    if(data.volunteers.length < 2) {
-        errors.volunteers = 'Two or more baby sitters are required'
-    };
+    // if(data.volunteers.length < 2) {
+    //     errors.volunteers = 'Two or more baby sitters are required'
+    // };
 
-    if(data.chef.length < 1) {
-        errors.chef = 'Please put someone in charge of food'
-    };
+    // if(data.chef.length < 1) {
+    //     errors.chef = 'Please put someone in charge of food'
+    // };
 
     return {
         errors,

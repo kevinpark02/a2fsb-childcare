@@ -12,7 +12,12 @@ class Calendar extends React.Component {
         this.state = {
 
         }
+
         this.handleDateClick = this.handleDateClick.bind(this);
+    }
+
+    componentDidMount(){
+      this.props.fetchEvents();
     }
 
     handleDateClick(e) {
@@ -20,6 +25,7 @@ class Calendar extends React.Component {
     }
 
     render() {
+      console.log(this.props.events)
         return (
           <div className="all-children-wrapper" style={{zIndex: 0}}>
             <FullCalendar
