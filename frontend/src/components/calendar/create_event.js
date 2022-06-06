@@ -58,6 +58,7 @@ class CreateEvent extends React.Component {
       }
 
       this.props.makeEvent(event)
+        .then(() => this.props.closeModal())
 
   }
 

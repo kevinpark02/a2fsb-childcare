@@ -45,7 +45,7 @@ export const removeEventErrors = () => ({
 export const fetchEvents = () => dispatch => (
     getEvents()
         .then(events => dispatch(receiveEvents(events)))
-        .catch(err => console.logg(err))
+        .catch(err => console.log(err))
 );
 
 export const fetchEvent =(eventId) => dispatch => (

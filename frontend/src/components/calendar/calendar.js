@@ -9,10 +9,6 @@ class Calendar extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-
-        }
-
         this.handleDateClick = this.handleDateClick.bind(this);
     }
 
@@ -24,10 +20,31 @@ class Calendar extends React.Component {
         this.props.openModal('event');
     }
 
+    handleEventClick = ({ event }) => {
+      console.log(event)
+    }
+
+    formatEvent() {
+      let events = Object.values(this.props.events)
+      let formattedEvents = [];
+
+      events.forEach(event => {
+        formattedEvents.push({
+          "title": event.eventName,
+          "start": event.startTime,
+          "end": event.endTime,
+          "children": ["Kara", "Elena"]
+        })
+      })
+
+      return formattedEvents;
+    }
+
     render() {
-      console.log(this.props.events)
         return (
-          <div className="all-children-wrapper" style={{zIndex: 0}}>
+          <div className="all-children-wrapper" 
+               style={{zIndex: 0}}
+               id='draggable-el'>
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, listPlugin]}
               initialView="dayGridMonth"
@@ -37,7 +54,10 @@ class Calendar extends React.Component {
                 center: "title",
                 right: "dayGridMonth,dayGridWeek,dayGridDay,listWeek",
               }}
+              events={this.formatEvent()}
               dateClick={this.handleDateClick}
+              editable="true"
+              eventClick={this.handleEventClick}
             />
           </div>
         );
