@@ -30,11 +30,12 @@ class Calendar extends React.Component {
 
       events.forEach(event => {
         formattedEvents.push({
-          "title": event.eventName,
-          "start": event.startTime,
-          "end": event.endTime,
-          "children": ["Kara", "Elena"]
-        })
+          title: event.eventName,
+          start: event.startTime,
+          end: event.endTime,
+          borderColor: "#B9B4A6",
+          textColor: "#000000"
+        });
       })
 
       return formattedEvents;
@@ -42,9 +43,11 @@ class Calendar extends React.Component {
 
     render() {
         return (
-          <div className="all-children-wrapper" 
-               style={{zIndex: 0}}
-               id='draggable-el'>
+          <div
+            className="all-children-wrapper"
+            style={{ zIndex: 0 }}
+            id="draggable-el"
+          >
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin, listPlugin]}
               initialView="dayGridMonth"
@@ -56,8 +59,8 @@ class Calendar extends React.Component {
               }}
               events={this.formatEvent()}
               dateClick={this.handleDateClick}
-              editable="true"
               eventClick={this.handleEventClick}
+              editable="true"
             />
           </div>
         );
