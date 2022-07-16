@@ -13,6 +13,7 @@ const path = require('path');
 const users = require("./routes/api/users");
 const children = require("./routes/api/children");
 const volunteers = require("./routes/api/volunteers");
+const events = require("./routes/api/events");
 const images = require("./routes/api/upload");
 // ADD REQUIRED ROUTES - END
 
@@ -38,6 +39,7 @@ app.use('/api/images', images);
 app.use("/api/users", users);
 app.use("/api/children", children);
 app.use("/api/volunteers", volunteers);
+app.use("/api/events", events);
 // ADD BACKEND ROUTES - END
 
 const port = process.env.PORT || 5000;

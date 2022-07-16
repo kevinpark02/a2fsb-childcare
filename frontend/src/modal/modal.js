@@ -3,6 +3,7 @@ import { closeModal } from "../actions/modal_actions";
 import { connect } from "react-redux";
 import NewChildContainer from "../components/children/new_child_container";
 import ChildrenShowContainer from "../components/children_show/children_show_container";
+import NewEventContainer from "../components/calendar/new_event_container";
 import './modal.css';
 
 function Modal({ modal, childId, closeModal }) {
@@ -24,6 +25,11 @@ function Modal({ modal, childId, closeModal }) {
           />
         );
         break;
+    case "event":
+      component = (
+        <NewEventContainer closeModal={closeModal} />
+      );
+      break;
     default:
       return null;
   }
