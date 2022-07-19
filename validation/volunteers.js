@@ -7,6 +7,7 @@ module.exports = function validateVolunteerInput(data) {
     data.firstName = validText(data.firstName) ? data.firstName : "";
     data.lastName = validText(data.lastName) ? data.lastName : "";
     data.gender = validText(data.gender) ? data.gender : "";
+    data.status = validText(data.status) ? data.status : "";
     data.phone = validText(data.phone) ? data.phone : "";
     data.email = validText(data.email) ? data.email : "";
 
@@ -20,6 +21,10 @@ module.exports = function validateVolunteerInput(data) {
 
     if (Validator.isEmpty(data.gender)) {
       errors.gender = "Gender field is required";
+    }
+
+    if (Validator.isEmpty(data.status)) {
+      errors.status = "Status field is required";
     }
 
     if (Validator.isMobilePhone(data.phone)) {
