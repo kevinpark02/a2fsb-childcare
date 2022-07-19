@@ -30,8 +30,11 @@ router.post('/new', (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         gender: req.body.gender,
+        status: req.body.status,
         phone: req.body.phone,
-        email: req.body.email
+        email: req.body.email,
+        photoId: req.body.photoId,
+        photoUrl: req.body.photoUrl
     })
 
     if(!isValid) {
