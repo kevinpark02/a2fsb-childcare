@@ -46,7 +46,7 @@ export const makeVolunteer = data => dispatch => (
 
 export const removeVolunteer = volunteerId => dispatch => (
     deleteVolunteer(volunteerId)
-        .then(() => dispatch(clearChild(childId)))
+        .then(() => dispatch(clearVolunteer(volunteerId)))
         .catch(err => console.log(err))
 );
 
