@@ -1,8 +1,8 @@
-import { RECEIVE_VOLUNTEER_ERRORS, REMOVE_VOLUNTEER_ERRORS } from "../actions/volunteer_actions";
+import { RECEIVE_VOLUNTEER_ERRORS, REMOVE_VOLUNTEER_ERRORS, } from "../actions/volunteer_actions";
 
 const _nullErrors = [];
 
-const VolunteerErrorsReducer = (state = _nullErrors, actions) => {
+const VolunteerErrorsReducer = (state = _nullErrors, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_VOLUNTEER_ERRORS:
