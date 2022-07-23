@@ -26,6 +26,14 @@ const VolunteerSchema = new Schema({
         type: String,
         required: true
     },
+    photoId: {
+        type: String,
+        required: false
+    },
+    photoUrl: {
+        type: String,
+        required: false
+    },
     date: {
         type: Date,
         default: Date.now
