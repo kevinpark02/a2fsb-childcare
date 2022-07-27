@@ -3,13 +3,13 @@ import { useRef } from 'react';
 import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { editVolunteer, removeVolunteer } from "../../actions/volunteer_actions";
-import Multiselect from "multiselect-react-dropdown";
+import { getVolunteers } from "../../util/volunteer_api_util";
 
-class VolunteerShow extends React.Componennt {
+class VolunteerShow extends React.Component {
     constructor(props) {
         super(props);
         const volunteers = this.props.volunteers;
-        const volunteer = volunteer.find((volunteer) => volunteer._id == this.props.volunteerId);
+        const volunteer = volunteers.find((volunteer) => volunteer._id === this.props.volunteerId);
         this.state = {
             firstName: volunteer.firstName,
             lastName: volunteer.lastName,
@@ -20,6 +20,9 @@ class VolunteerShow extends React.Componennt {
             _id: volunteer._id,
             errors: {},
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
         
     componentDidMount() {

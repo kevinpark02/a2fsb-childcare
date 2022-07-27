@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPhotos } from '../../actions/photo_actions';
 import { fetchVolunteers, makeVolunteer, removeVolunteer, removeVolunteerErrors } from '../../actions/volunteer_actions';
-import { fetchVolunteers } from '../../actions/volunteer_actions';
 
 import CreateVolunteer from './create_volunteer';
 
