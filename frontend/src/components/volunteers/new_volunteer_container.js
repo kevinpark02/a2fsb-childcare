@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     return {
         currentUser: state.session.user,
         newVolunteer: state.volunteers.new,
-        errors: state.error.volunnteer,
+        errors: state.error.volunteer,
     };
 };
 
