@@ -7,9 +7,12 @@ import MainPage from "./main/main_page";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ChildrenContainer from "./children/children_container";
+import VolunteersContainer from "./volunteers/volunteers_container";
 import ProfileContainer from "./profile/profile_container";
 import NewChildContainer from "./children/new_child_container";
 import ChildrenShowContainer from "./children_show/children_show_container";
+import NewVolunteerContainer from "./volunteers/new_volunteer_container";
+import VolunteersShowContainer from "./volunteers_show/volunteers_show_container";
 import CalendarContainer from "./calendar/calendar_container";
 import NewEventContainer from "./calendar/new_event_container";
 import Modal from "../modal/modal";
@@ -28,6 +31,10 @@ const App = () => (
       <ProtectedRoute exact path="/children" component={ChildrenContainer} />
       <ProtectedRoute exact path="/children" component={NewChildContainer} />
       <ProtectedRoute exact path="/children" component={ChildrenShowContainer} />
+
+      <ProtectedRoute exact path="/volunteers" component={VolunteersContainer} />
+      <ProtectedRoute exact path="/volunteers" component={NewVolunteerContainer} />
+      <ProtectedRoute exact path="/volunteers" component={VolunteersShowContainer} />
 
       <ProtectedRoute exact path="/calendar" component={CalendarContainer} />
       <ProtectedRoute exact path="/calendar" component={NewEventContainer} />
